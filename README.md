@@ -1,6 +1,6 @@
 # Simon-Says-C3PO
 
-- Version 0.01A
+# Version 0.01A
 * Using Lab 9 as structure.
 * Separated main() and interrupt functions.
 * Use Enter Key to "start game".
