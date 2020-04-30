@@ -17,3 +17,21 @@ NEED TO DO:
 * ALSO WHY THE SWITCH KEEP BOUNCING WHEN THERE IS A SLIGHT DEBOUNCE ALREADY?
 * Need to format code better, probably can put the game function into a dedicated .h/.c files for our eyes.
 * Also I want to do fun easter eggs because tired.
+ ____
+< hi >
+ ----
+   \
+    \
+       /~\
+      |oo )
+      _\=/_
+     /     \
+    //|/.\|\\
+   ||  \_/  ||
+   || |\ /| ||
+    # \_ _/  #
+      | | |
+      | | |
+      []|[]
+      | | |
+     /_]_[_\
