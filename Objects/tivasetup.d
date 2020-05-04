@@ -1,5 +1,6 @@
 .\objects\tivasetup.o: tivaSetup.c
 .\objects\tivasetup.o: tivaSetup.h
+.\objects\tivasetup.o: include.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
