@@ -3,11 +3,11 @@
 <title>Static Call Graph - [.\Objects\UART0_terminal.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\UART0_terminal.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Thu Apr 30 09:25:09 2020
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060750: Last Updated: Mon May 04 15:17:01 2020
 <BR><P>
-<H3>Maximum Stack Usage =        136 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
+<H3>Maximum Stack Usage =        144 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
-UARTIntHandler &rArr; UARTSwitchCases &rArr; roundStart &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
+UARTIntHandler &rArr; UARTSwitchCases &rArr; roundStart &rArr; userLEDSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 <P>
 <H3>
 Functions with no stack information
@@ -196,7 +196,9 @@ Global Symbols
 <P><STRONG><a name="[1d]"></a>SysCtlDelay</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, sysctl.o(.emb_text))
 <BR><BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
 </UL>
-<BR>[Called By]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
+<LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;userLEDSwitchCases
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPortF_Handler
 </UL>
 
@@ -214,7 +216,7 @@ Global Symbols
 
 <P><STRONG><a name="[6a]"></a>CPUbasepriGet</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, cpu.o(.emb_text), UNUSED)
 
-<P><STRONG><a name="[43]"></a>rand</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, rand.o(.emb_text))
+<P><STRONG><a name="[42]"></a>rand</STRONG> (Thumb, 48 bytes, Stack size 0 bytes, rand.o(.emb_text))
 <BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
 </UL>
 
@@ -286,10 +288,10 @@ Global Symbols
 <LI><a href="#[24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeGPIOInput
 </UL>
 
-<P><STRONG><a name="[22]"></a>GPIOF_Interrupt_Init</STRONG> (Thumb, 76 bytes, Stack size 4 bytes, tivasetup.o(i.GPIOF_Interrupt_Init))
-<BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = GPIOF_Interrupt_Init
+<P><STRONG><a name="[22]"></a>GPIOF_Interrupt_Init</STRONG> (Thumb, 78 bytes, Stack size 8 bytes, tivasetup.o(i.GPIOF_Interrupt_Init))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = GPIOF_Interrupt_Init
 </UL>
-<BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntGlobalEnable
+<BR>[Calls]<UL><LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
 </UL>
 <BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -333,11 +335,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
 </UL>
 
-<P><STRONG><a name="[42]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
-<BR><BR>[Called By]<UL><LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledSwitchCases
+<P><STRONG><a name="[41]"></a>GPIOPinWrite</STRONG> (Thumb, 6 bytes, Stack size 0 bytes, gpio.o(i.GPIOPinWrite))
+<BR><BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;userLEDSwitchCases
+<LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledSwitchCases
 </UL>
 
-<P><STRONG><a name="[7]"></a>GPIOPortF_Handler</STRONG> (Thumb, 162 bytes, Stack size 8 bytes, tivasetup.o(i.GPIOPortF_Handler))
+<P><STRONG><a name="[7]"></a>GPIOPortF_Handler</STRONG> (Thumb, 168 bytes, Stack size 8 bytes, tivasetup.o(i.GPIOPortF_Handler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = GPIOPortF_Handler &rArr; ledSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
@@ -346,12 +349,9 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_rvmdk.o(RESET)
 </UL>
-<P><STRONG><a name="[3e]"></a>IntEnable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
+<P><STRONG><a name="[23]"></a>IntEnable</STRONG> (Thumb, 92 bytes, Stack size 0 bytes, interrupt.o(i.IntEnable))
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
-</UL>
-
-<P><STRONG><a name="[23]"></a>IntGlobalEnable</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, tivasetup.o(i.IntGlobalEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Interrupt_Init
+<LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Interrupt_Init
 </UL>
 
 <P><STRONG><a name="[2b]"></a>IntMasterEnable</STRONG> (Thumb, 14 bytes, Stack size 8 bytes, interrupt.o(i.IntMasterEnable))
@@ -382,8 +382,8 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[36]"></a>SysCtlPeripheralEnable</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralEnable))
-<BR><BR>[Called By]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTStdioConfig
-<LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
+<BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
+<LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTStdioConfig
 </UL>
 
 <P><STRONG><a name="[35]"></a>SysCtlPeripheralPresent</STRONG> (Thumb, 40 bytes, Stack size 0 bytes, sysctl.o(i.SysCtlPeripheralPresent))
@@ -401,15 +401,15 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
 </UL>
 <BR>[Called By]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
+<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
 </UL>
 
 <P><STRONG><a name="[30]"></a>UARTConfigSetExpClk</STRONG> (Thumb, 110 bytes, Stack size 0 bytes, uart.o(i.UARTConfigSetExpClk))
 <BR><BR>[Calls]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
 </UL>
-<BR>[Called By]<UL><LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
+<BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
+<LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
 <LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTStdioConfig
-<LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
 </UL>
 
 <P><STRONG><a name="[37]"></a>UARTEnable</STRONG> (Thumb, 20 bytes, Stack size 0 bytes, uart.o(i.UARTEnable))
@@ -424,12 +424,12 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTIntHandler
 </UL>
 
-<P><STRONG><a name="[3f]"></a>UARTIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uart.o(i.UARTIntEnable))
+<P><STRONG><a name="[3e]"></a>UARTIntEnable</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, uart.o(i.UARTIntEnable))
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
 </UL>
 
 <P><STRONG><a name="[6]"></a>UARTIntHandler</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, tivasetup.o(i.UARTIntHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = UARTIntHandler &rArr; UARTSwitchCases &rArr; roundStart &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
+<BR><BR>[Stack]<UL><LI>Max Depth = 144<LI>Call Chain = UARTIntHandler &rArr; UARTSwitchCases &rArr; roundStart &rArr; userLEDSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[32]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTIntStatus
 <LI><a href="#[31]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTIntClear
@@ -453,7 +453,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[33]"></a>UARTSwitchCases</STRONG> (Thumb, 48 bytes, Stack size 8 bytes, tivasetup.o(i.UARTSwitchCases))
-<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = UARTSwitchCases &rArr; roundStart &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
+<BR><BR>[Stack]<UL><LI>Max Depth = 136<LI>Call Chain = UARTSwitchCases &rArr; roundStart &rArr; userLEDSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharGet
@@ -465,12 +465,12 @@ Global Symbols
 <P><STRONG><a name="[39]"></a>UART_int_init</STRONG> (Thumb, 108 bytes, Stack size 8 bytes, tivasetup.o(i.UART_int_init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = UART_int_init &rArr; GPIOPinTypeUART &rArr; GPIOPadConfigSet
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTIntEnable
+<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTIntEnable
 <LI><a href="#[3c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTFlowControlSet
 <LI><a href="#[3b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlClockGet
 <LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntPrioritySet
 <LI><a href="#[2b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntMasterEnable
-<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
+<LI><a href="#[23]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;IntEnable
 <LI><a href="#[28]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinTypeUART
 <LI><a href="#[3a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinConfigure
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTConfigSetExpClk
@@ -483,59 +483,72 @@ Global Symbols
 <P><STRONG><a name="[29]"></a>UARTprintf</STRONG> (Thumb, 26 bytes, Stack size 24 bytes, uartstdio.o(i.UARTprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
+<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
+<BR>[Called By]<UL><LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;userLEDSwitchCases
 <LI><a href="#[2a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ledSwitchCases
 <LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTSwitchCases
-<LI><a href="#[17]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 <LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPortF_Handler
 </UL>
 
-<P><STRONG><a name="[40]"></a>UARTvprintf</STRONG> (Thumb, 574 bytes, Stack size 64 bytes, uartstdio.o(i.UARTvprintf))
+<P><STRONG><a name="[3f]"></a>UARTvprintf</STRONG> (Thumb, 574 bytes, Stack size 64 bytes, uartstdio.o(i.UARTvprintf))
 <BR><BR>[Stack]<UL><LI>Max Depth = 80<LI>Call Chain = UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTwrite
 </UL>
 <BR>[Called By]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
 </UL>
 
-<P><STRONG><a name="[41]"></a>UARTwrite</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, uartstdio.o(i.UARTwrite))
+<P><STRONG><a name="[40]"></a>UARTwrite</STRONG> (Thumb, 46 bytes, Stack size 16 bytes, uartstdio.o(i.UARTwrite))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = UARTwrite
 </UL>
 <BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTCharPut
 </UL>
-<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
+<BR>[Called By]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTvprintf
 </UL>
 
 <P><STRONG><a name="[2a]"></a>ledSwitchCases</STRONG> (Thumb, 178 bytes, Stack size 8 bytes, tivasetup.o(i.ledSwitchCases))
 <BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = ledSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+<BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
 <LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
 </UL>
 <BR>[Called By]<UL><LI><a href="#[7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPortF_Handler
 </UL>
 
-<P><STRONG><a name="[17]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, uart_lab9.o(i.main))
+<P><STRONG><a name="[17]"></a>main</STRONG> (Thumb, 46 bytes, Stack size 0 bytes, main.o(i.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = main &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
-<LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
+<BR>[Calls]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_int_init
 <LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PortFunctionInit
 <LI><a href="#[22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOF_Interrupt_Init
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
 <LI><a href="#[1e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;srand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[16]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[38]"></a>roundStart</STRONG> (Thumb, 54 bytes, Stack size 16 bytes, tivasetup.o(i.roundStart))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120<LI>Call Chain = roundStart &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
+<P><STRONG><a name="[38]"></a>roundStart</STRONG> (Thumb, 88 bytes, Stack size 16 bytes, game.o(i.roundStart))
+<BR><BR>[Stack]<UL><LI>Max Depth = 128<LI>Call Chain = roundStart &rArr; userLEDSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
 </UL>
-<BR>[Calls]<UL><LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
+<BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;userLEDSwitchCases
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rand
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTSwitchCases
+</UL>
+
+<P><STRONG><a name="[43]"></a>userLEDSwitchCases</STRONG> (Thumb, 214 bytes, Stack size 8 bytes, tivasetup.o(i.userLEDSwitchCases))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112<LI>Call Chain = userLEDSwitchCases &rArr; UARTprintf &rArr; UARTvprintf &rArr; UARTwrite
+</UL>
+<BR>[Calls]<UL><LI><a href="#[1d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysCtlDelay
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIOPinWrite
+<LI><a href="#[29]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UARTprintf
+</UL>
+<BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;roundStart
 </UL>
 
 <P><STRONG><a name="[f]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))

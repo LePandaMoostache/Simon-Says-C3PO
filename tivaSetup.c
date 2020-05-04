@@ -3,8 +3,6 @@
 int count = 0;
 bool startGame = false;
 
-
-
 void
 PortFunctionInit(void) {
 
@@ -116,6 +114,7 @@ void UARTSwitchCases(void)
 				UARTprintf("\r\nEnter Key Pressed\n");
 				startGame = true;
 				roundStart(); 
+				//IntDisable(UART0_BASE); // Disable interrupt as we don't want repeats
 				break;
 
 			// prints "Invalid Input" to terminal
@@ -149,7 +148,7 @@ void GPIOF_Interrupt_Init(void) {
     GPIO_PORTF_IS_R &= ~0x11; // PF0 and PF4 are edge-sensitive
     GPIO_PORTF_IBE_R &= ~0x11; // PF0 and PF4 NOT both edges trigger 
     GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
-    IntGlobalEnable(); // globally enable interrupt 
+    IntEnable(INT_GPIOF); 
 }
 
 /** GPIOF INTERRUPT HANDLER***/
@@ -157,11 +156,11 @@ void GPIOPortF_Handler(void)
 {
 	//switch debounce
 	NVIC_EN0_R &= ~0x40000000; 
-	SysCtlDelay(5333);	// Delay for a while
+	SysCtlDelay(53333);	// Delay for a while
 	NVIC_EN0_R |= 0x40000000; 
 	if (startGame == true) {
   //SW1 has action
-	if(GPIO_PORTF_RIS_R&0x10 )
+	if(GPIO_PORTF_RIS_R&0x10)
 	{
 		//startGame = false;
 		// acknowledge flag for PF4
@@ -173,7 +172,7 @@ void GPIOPortF_Handler(void)
 			//counter imcremented by 1
 			count++;
 			count = count & 3;
-			//UARTprintf("\r\nColor currently selected: ");
+			UARTprintf("\r\nColor currently selected: ");
 		}
 	}
 	
@@ -223,18 +222,39 @@ void ledSwitchCases(void) {
 		}
 }
 
-void roundStart(void) {
-	
-		if (startGame == true) {
-			
-			int roundNum = 1; 
-			UARTprintf("\r\n----ROUND %i: ---\n", roundNum);
+void userLEDSwitchCases(int test) {
+        switch (test) {
 
-				int test = (rand() % 3) +1;
-				UARTprintf("%i",test);
+            case 0:
+								UARTprintf("Blank\n");
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+                break;
+            case 1:
+								UARTprintf("Red\n");
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, RED_MASK);
+						    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+								SysCtlDelay(2000000);
+							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+                break;
+            case 2:
+								UARTprintf("Blue\n");	
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, BLUE_MASK);
+								SysCtlDelay(2000000);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+                break;
+            case 3:
+								UARTprintf("Green\n");
+							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GREEN_MASK);
+								SysCtlDelay(2000000);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+                break;
 		}
-		else {
-		UARTprintf("\r\n----NOTHING HAPPENS---\n");
-		}
-	}
+}
+
 
