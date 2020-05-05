@@ -1,7 +1,9 @@
 #include "tivaSetup.h"
 
-int count = 0;
+int userCount = 0;
 bool startGame = false;
+bool lostRound = false;
+int currentRound = 1;
 
 void
 PortFunctionInit(void) {
@@ -107,13 +109,13 @@ void UARTSwitchCases(void)
 		char newChar;
 		newChar = UARTCharGet(UART0_BASE);
 	
-		if (newChar != NULL) {
+		if (newChar != NULL && startGame == false) {
 			switch (newChar) {
 			// Red LED is ON, prints R to terminal
 			case '\r':
 				UARTprintf("\r\nEnter Key Pressed\n");
 				startGame = true;
-				roundStart(); 
+				roundStart(currentRound); 
 				//IntDisable(UART0_BASE); // Disable interrupt as we don't want repeats
 				break;
 
@@ -158,7 +160,8 @@ void GPIOPortF_Handler(void)
 	NVIC_EN0_R &= ~0x40000000; 
 	SysCtlDelay(53333);	// Delay for a while
 	NVIC_EN0_R |= 0x40000000; 
-	if (startGame == true) {
+
+	if (startGame == true && lostRound == false) {
   //SW1 has action
 	if(GPIO_PORTF_RIS_R&0x10)
 	{
@@ -169,9 +172,9 @@ void GPIOPortF_Handler(void)
 		//SW1 is pressed
 		if(((GPIO_PORTF_DATA_R&0x10)==0x00)) 
 		{
-			//counter imcremented by 1
-			count++;
-			count = count & 3;
+			//counter incremented by 1
+			userCount++;
+			userCount = userCount & 3;
 			UARTprintf("\r\nColor currently selected: ");
 		}
 	}
@@ -184,77 +187,74 @@ void GPIOPortF_Handler(void)
 		
 		if(((GPIO_PORTF_DATA_R&0x01)==0x00)) 
 		{
-			UARTprintf("----CONFIRM PRESS---");
+			UARTprintf("\r\n----CONFIRM PRESS---");
+			for (int i = 1; i <= currentRound; ++i) {
+				userArray[i] = userCount;
+			}
+			roundCheck();
 		}
 	}
 	
-	ledSwitchCases();
+	userLEDSwitchCases(userCount);
 }
 }
 
-void ledSwitchCases(void) {
-        switch (count) {
-
+int userLEDSwitchCases(int userCount) {
+        switch (userCount) {
             case 0:
-								UARTprintf("Blank\n");
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+								UARTprintf("User: Blank\n");
+                GPIO_PORTF_DATA_R = 0x00;
                 break;
             case 1:
-								UARTprintf("Red\n");
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, RED_MASK);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+								UARTprintf("User: Red\n");
+								GPIO_PORTF_DATA_R = 0x02;
+								SysCtlDelay(2000000);
+							  GPIO_PORTF_DATA_R = 0x00;
                 break;
             case 2:
-								UARTprintf("Blue\n");	
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, BLUE_MASK);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+								UARTprintf("User: Blue\n");	
+								GPIO_PORTF_DATA_R = 0x04;
+								SysCtlDelay(2000000);
+								GPIO_PORTF_DATA_R = 0x00;
                 break;
             case 3:
-								UARTprintf("Green\n");
-							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GREEN_MASK);
+								UARTprintf("User: Green\n");
+							  GPIO_PORTF_DATA_R = 0x08;
+								SysCtlDelay(2000000);
+								GPIO_PORTF_DATA_R = 0x00;
                 break;
 		}
+				return userCount;
 }
 
-void userLEDSwitchCases(int test) {
-        switch (test) {
+// Remember to remove the UARTprintf, exists right now for test cases. 
+int ledSwitchCases(int comCount) {
+        switch (comCount) {
 
             case 0:
 								UARTprintf("Blank\n");
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+                GPIO_PORTF_DATA_R = 0x00;
                 break;
             case 1:
 								UARTprintf("Red\n");
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, RED_MASK);
-						    GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+                GPIO_PORTF_DATA_R = 0x02;
 								SysCtlDelay(2000000);
 							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
                 break;
             case 2:
 								UARTprintf("Blue\n");	
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, BLUE_MASK);
+                GPIO_PORTF_DATA_R = 0x04;
 								SysCtlDelay(2000000);
 								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
                 break;
             case 3:
 								UARTprintf("Green\n");
-							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-                GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, GREEN_MASK);
+							  GPIO_PORTF_DATA_R = 0x08;
 								SysCtlDelay(2000000);
 								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
                 break;
 		}
+				return comCount;
 }
 
 
