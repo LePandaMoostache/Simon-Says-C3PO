@@ -1,5 +1,4 @@
 #include "tivaSetup.h"
-#include "game.h"
 
 int main(void) {
 	
@@ -7,7 +6,7 @@ int main(void) {
 
 		UART_int_init();
 		GPIOF_Interrupt_Init();
-		srand((NULL));
+		//srand((NULL));
 	  //
     // Set the clocking to run directly from the crystal.
     //
@@ -25,4 +24,3 @@ int main(void) {
 	}
 
 	}
-

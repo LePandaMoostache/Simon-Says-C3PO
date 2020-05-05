@@ -4,7 +4,6 @@
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\ctime
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: ..\..\..\..\inc/hw_types.h
@@ -19,5 +18,3 @@
 .\objects\main.o: ..\..\..\..\driverlib/uart.h
 .\objects\main.o: ..\..\..\..\utils/uartstdio.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdarg.h
-.\objects\main.o: game.h
-.\objects\main.o: include.h

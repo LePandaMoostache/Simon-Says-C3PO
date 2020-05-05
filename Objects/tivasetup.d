@@ -4,7 +4,6 @@
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\ctime
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\tivasetup.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\tivasetup.o: ..\..\..\..\inc/hw_types.h

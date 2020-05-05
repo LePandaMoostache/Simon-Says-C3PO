@@ -1,8 +1,9 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <ctime>
+#include <time.h> // Used <ctime> as well, does not work
 #include <stdlib.h>
+
 
 #include "inc/hw_types.h"
 #include "inc/hw_memmap.h"
@@ -15,8 +16,8 @@
 #include "driverlib/gpio.h"
 #include "driverlib/interrupt.h"
 #include "driverlib/timer.h"
-
 #include "driverlib/uart.h"
+
 #include "utils/uartstdio.h"
 
 #define 	RED_MASK 		0x02
