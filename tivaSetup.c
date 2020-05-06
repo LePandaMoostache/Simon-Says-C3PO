@@ -7,7 +7,7 @@ int currentRound = 1;
 
 void
 PortFunctionInit(void) {
-
+		
     volatile uint32_t ui32Loop;
 
     // Enable the clock of the GPIO port that is used for the on-board LED and switch.
@@ -33,8 +33,7 @@ PortFunctionInit(void) {
 
     //
     //Now modify the configuration of the pins that we unlocked.
-    //
-    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
+     GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
      
 		//
     // Enable pin PF4 for GPIOInput
@@ -103,6 +102,15 @@ void UARTIntHandler(void)
 
 }
 
+//Globally enable interrupts 
+void IntGlobalEnable(void) {
+    __asm("    cpsie   i\n");
+}
+
+//Globally disable interrupts 
+void IntGlobalDisable(void) {
+    __asm("    cpsid   i\n");
+}
 void UARTSwitchCases(void)
 {
 		
@@ -116,7 +124,6 @@ void UARTSwitchCases(void)
 				UARTprintf("\r\nEnter Key Pressed\n");
 				startGame = true;
 				roundStart(currentRound); 
-				//IntDisable(UART0_BASE); // Disable interrupt as we don't want repeats
 				break;
 
 			// prints "Invalid Input" to terminal
@@ -129,17 +136,6 @@ void UARTSwitchCases(void)
 		}
 }
 
-//Globally enable interrupts 
-void IntGlobalEnable(void) {
-    __asm("    cpsie   i\n");
-}
-
-//Globally disable interrupts 
-void IntGlobalDisable(void) {
-    __asm("    cpsid   i\n");
-}
-
-
 /** GPIOF INTERRUPT INITIALIZATION***/
 void GPIOF_Interrupt_Init(void) {
 
@@ -149,7 +145,7 @@ void GPIOF_Interrupt_Init(void) {
     GPIO_PORTF_IM_R |= 0x11; // arm interrupt on PF0 and PF4
     GPIO_PORTF_IS_R &= ~0x11; // PF0 and PF4 are edge-sensitive
     GPIO_PORTF_IBE_R &= ~0x11; // PF0 and PF4 NOT both edges trigger 
-    GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+    //GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
     IntEnable(INT_GPIOF); 
 }
 
@@ -161,7 +157,8 @@ void GPIOPortF_Handler(void)
 	SysCtlDelay(53333);	// Delay for a while
 	NVIC_EN0_R |= 0x40000000; 
 
-	if (startGame == true && lostRound == false) {
+if (startGame == true && lostRound == false) {
+	
   //SW1 has action
 	if(GPIO_PORTF_RIS_R&0x10)
 	{
@@ -188,9 +185,10 @@ void GPIOPortF_Handler(void)
 		if(((GPIO_PORTF_DATA_R&0x01)==0x00)) 
 		{
 			UARTprintf("\r\n----CONFIRM PRESS---");
-			for (int i = 1; i <= currentRound; ++i) {
+			for (int i = 0; i <= currentRound; ++i) {
 				userArray[i] = userCount;
 			}
+			
 			roundCheck();
 		}
 	}
@@ -198,6 +196,38 @@ void GPIOPortF_Handler(void)
 	userLEDSwitchCases(userCount);
 }
 }
+
+// Remember to remove the UARTprintf, exists right now for test cases. 
+int ledSwitchCases(int count) {
+        switch (count) {
+            case 0:
+								UARTprintf("Blank\n");
+                GPIO_PORTF_DATA_R = 0x00;
+                break;
+            case 1:
+								UARTprintf("Red\n");
+                GPIO_PORTF_DATA_R = 0x02;
+								SysCtlDelay(2000000);
+							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+                break;
+            case 2:
+								UARTprintf("Blue\n");	
+                GPIO_PORTF_DATA_R = 0x04;
+								SysCtlDelay(2000000);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+                break;
+            case 3:
+								UARTprintf("Green\n");
+							  GPIO_PORTF_DATA_R = 0x08;
+								SysCtlDelay(2000000);
+								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+                break;
+		}
+				return count;
+}
+
+// May need this again for the user side, that way can display confirmation of LED
+// Currently using ledSwitchCases() for both comArray and userArray
 
 int userLEDSwitchCases(int userCount) {
         switch (userCount) {
@@ -226,35 +256,4 @@ int userLEDSwitchCases(int userCount) {
 		}
 				return userCount;
 }
-
-// Remember to remove the UARTprintf, exists right now for test cases. 
-int ledSwitchCases(int comCount) {
-        switch (comCount) {
-
-            case 0:
-								UARTprintf("Blank\n");
-                GPIO_PORTF_DATA_R = 0x00;
-                break;
-            case 1:
-								UARTprintf("Red\n");
-                GPIO_PORTF_DATA_R = 0x02;
-								SysCtlDelay(2000000);
-							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                break;
-            case 2:
-								UARTprintf("Blue\n");	
-                GPIO_PORTF_DATA_R = 0x04;
-								SysCtlDelay(2000000);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-                break;
-            case 3:
-								UARTprintf("Green\n");
-							  GPIO_PORTF_DATA_R = 0x08;
-								SysCtlDelay(2000000);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
-                break;
-		}
-				return comCount;
-}
-
 

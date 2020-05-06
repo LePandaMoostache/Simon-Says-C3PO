@@ -2,11 +2,12 @@
 
 int main(void) {
 	
+		//time_t t;
+		//srand((unsigned) time(&t));
 		PortFunctionInit();
-
 		UART_int_init();
 		GPIOF_Interrupt_Init();
-		//srand((NULL));
+		
 	  //
     // Set the clocking to run directly from the crystal.
     //
@@ -16,11 +17,11 @@ int main(void) {
 		UARTprintf("\r\nSW1 is to select a color. SW2 is to confirm color press.\n");
 	
 		UARTprintf("\r\nPlease press ENTER Key to start game!\n");
-	
+		
 
 		while (1) //let interrupt handler do the UART echo function
 		{
 			
-	}
+		}
 
 	}
