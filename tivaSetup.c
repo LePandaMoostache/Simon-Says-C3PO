@@ -4,7 +4,7 @@ int userCount = 0;
 bool startGame = false;
 bool lostRound = false;
 int currentRound = 1;
-
+int position = 1;
 void
 PortFunctionInit(void) {
 		
@@ -150,110 +150,107 @@ void GPIOF_Interrupt_Init(void) {
 }
 
 /** GPIOF INTERRUPT HANDLER***/
-void GPIOPortF_Handler(void)
-{
-	//switch debounce
-	NVIC_EN0_R &= ~0x40000000; 
-	SysCtlDelay(53333);	// Delay for a while
-	NVIC_EN0_R |= 0x40000000; 
+void GPIOPortF_Handler(void) {
+    //switch debounce
+    NVIC_EN0_R &= ~0x40000000;
+    SysCtlDelay(533333); // Delay for a while
+    NVIC_EN0_R |= 0x40000000;
 
-if (startGame == true && lostRound == false) {
-	
-  //SW1 has action
-	if(GPIO_PORTF_RIS_R&0x10)
-	{
-		//startGame = false;
-		// acknowledge flag for PF4
-		GPIO_PORTF_ICR_R |= 0x10; 
-		
-		//SW1 is pressed
-		if(((GPIO_PORTF_DATA_R&0x10)==0x00)) 
-		{
-			//counter incremented by 1
-			userCount++;
-			userCount = userCount & 3;
-			UARTprintf("\r\nColor currently selected: ");
-		}
-	}
-	
-	//SW2 has action
-  if(GPIO_PORTF_RIS_R&0x01)
-	{
-		// acknowledge flag for PF0
-		GPIO_PORTF_ICR_R |= 0x01; 
-		
-		if(((GPIO_PORTF_DATA_R&0x01)==0x00)) 
-		{
-			UARTprintf("\r\n----CONFIRM PRESS---");
-			for (int i = 0; i <= currentRound; ++i) {
-				userArray[i] = userCount;
-			}
-			
-			roundCheck();
-		}
-	}
-	
-	userLEDSwitchCases(userCount);
-}
+    if (startGame == true && lostRound == false) {
+
+        //SW1 has action
+        if (GPIO_PORTF_RIS_R & 0x10) {
+            //startGame = false;
+            // acknowledge flag for PF4
+            GPIO_PORTF_ICR_R |= 0x10;
+
+            //SW1 is pressed
+            if (((GPIO_PORTF_DATA_R & 0x10) == 0x00)) {
+                //counter incremented by 1
+                userCount++;
+                userCount = userCount & 3;
+                UARTprintf("\r\nColor currently selected: ");
+                userLEDSwitchCases(userCount);
+            }
+        }
+
+        //SW2 has action
+        if (GPIO_PORTF_RIS_R & 0x01) {
+            // acknowledge flag for PF0
+            GPIO_PORTF_ICR_R |= 0x01;
+
+            if (((GPIO_PORTF_DATA_R & 0x01) == 0x00)) {
+
+                UARTprintf("\r\n----CONFIRM PRESS---");
+                userArray[position] = userCount;
+                userLEDSwitchCases(userCount);
+                position++;
+                if (position == currentRound + 1) {
+                    roundCheck();
+                }
+            }
+        }
+
+    }
 }
 
 // Remember to remove the UARTprintf, exists right now for test cases. 
 int ledSwitchCases(int count) {
-        switch (count) {
-            case 0:
-								UARTprintf("Blank\n");
-                GPIO_PORTF_DATA_R = 0x00;
-                break;
-            case 1:
-								UARTprintf("Red\n");
-                GPIO_PORTF_DATA_R = 0x02;
-								SysCtlDelay(2000000);
-							  GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
-                break;
-            case 2:
-								UARTprintf("Blue\n");	
-                GPIO_PORTF_DATA_R = 0x04;
-								SysCtlDelay(2000000);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
-                break;
-            case 3:
-								UARTprintf("Green\n");
-							  GPIO_PORTF_DATA_R = 0x08;
-								SysCtlDelay(2000000);
-								GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
-                break;
-		}
-				return count;
+    switch (count) {
+    case 0:
+        UARTprintf("Blank\n");
+        GPIO_PORTF_DATA_R = 0x00;
+        break;
+    case 1:
+        UARTprintf("Red\n");
+        GPIO_PORTF_DATA_R = 0x02;
+        SysCtlDelay(2000000);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x00);
+        break;
+    case 2:
+        UARTprintf("Blue\n");
+        GPIO_PORTF_DATA_R = 0x04;
+        SysCtlDelay(2000000);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x00);
+        break;
+    case 3:
+        UARTprintf("Green\n");
+        GPIO_PORTF_DATA_R = 0x08;
+        SysCtlDelay(2000000);
+        GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x00);
+        break;
+    }
+    return count;
 }
 
 // May need this again for the user side, that way can display confirmation of LED
 // Currently using ledSwitchCases() for both comArray and userArray
 
 int userLEDSwitchCases(int userCount) {
-        switch (userCount) {
-            case 0:
-								UARTprintf("User: Blank\n");
-                GPIO_PORTF_DATA_R = 0x00;
-                break;
-            case 1:
-								UARTprintf("User: Red\n");
-								GPIO_PORTF_DATA_R = 0x02;
-								SysCtlDelay(2000000);
-							  GPIO_PORTF_DATA_R = 0x00;
-                break;
-            case 2:
-								UARTprintf("User: Blue\n");	
-								GPIO_PORTF_DATA_R = 0x04;
-								SysCtlDelay(2000000);
-								GPIO_PORTF_DATA_R = 0x00;
-                break;
-            case 3:
-								UARTprintf("User: Green\n");
-							  GPIO_PORTF_DATA_R = 0x08;
-								SysCtlDelay(2000000);
-								GPIO_PORTF_DATA_R = 0x00;
-                break;
-		}
-				return userCount;
+    switch (userCount) {
+    case 0:
+        UARTprintf("User: Blank\n");
+        GPIO_PORTF_DATA_R = 0x00;
+        break;
+    case 1:
+        UARTprintf("User: Red\n");
+        GPIO_PORTF_DATA_R = 0x02;
+        SysCtlDelay(2000000);
+        GPIO_PORTF_DATA_R = 0x00;
+        break;
+    case 2:
+        UARTprintf("User: Blue\n");
+        GPIO_PORTF_DATA_R = 0x04;
+        SysCtlDelay(2000000);
+        GPIO_PORTF_DATA_R = 0x00;
+        break;
+    case 3:
+        UARTprintf("User: Green\n");
+        GPIO_PORTF_DATA_R = 0x08;
+        SysCtlDelay(2000000);
+        GPIO_PORTF_DATA_R = 0x00;
+        break;
+    }
+    return userCount;
 }
 

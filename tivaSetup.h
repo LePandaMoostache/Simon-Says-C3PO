@@ -17,6 +17,7 @@ extern int ledSwitchCases(int comCount);
 extern int userCount;
 extern bool startGame;
 extern bool lostRound;
+extern int position;
 
 extern void roundStart(int roundNum);
 extern void roundStartHelper(int currentRound);

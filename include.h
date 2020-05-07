@@ -20,9 +20,9 @@
 
 #include "utils/uartstdio.h"
 
-#define 	RED_MASK 		0x02
-#define 	BLUE_MASK 		0x04
-#define 	GREEN_MASK 		0x08
+#define 	RED_MASK 		0x02 //PF1
+#define 	BLUE_MASK 		0x04 //PF2
+#define 	GREEN_MASK 		0x08 //PF3
 #define 	OFF 				0x00
 
 #define		SW2					0x01 // PF0, 2^0 = 1

@@ -3,7 +3,9 @@
 int main(void) {
 	
 		//time_t t;
-		//srand((unsigned) time(&t));
+		//srand((unsigned) time(NULL));
+	//May need to configure the memory
+	// implement pi
 		PortFunctionInit();
 		UART_int_init();
 		GPIOF_Interrupt_Init();
