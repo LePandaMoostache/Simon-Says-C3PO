@@ -9,8 +9,8 @@ extern void IntGlobalEnable(void);
 extern void IntGlobalDisable(void);
 extern void GPIOF_Interrupt_Init(void);
 extern void GPIOPortF_Handler(void);
-extern int userLEDSwitchCases(int userCount);
 
+extern int userLEDSwitchCases(int userCount);
 extern int ledSwitchCases(int comCount);
 
 
@@ -29,6 +29,6 @@ extern void roundLose(void);
 extern int comArray[];
 extern int userArray[];
 
-extern int randomLED;
+extern float randomLED;
 extern int currentRound;
 
