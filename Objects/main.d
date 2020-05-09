@@ -7,6 +7,7 @@
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+.\objects\main.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 .\objects\main.o: ..\..\..\..\inc/hw_types.h
 .\objects\main.o: ..\..\..\..\inc/hw_memmap.h
 .\objects\main.o: ..\..\..\..\inc/hw_gpio.h

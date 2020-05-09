@@ -5,8 +5,12 @@ extern void PortFunctionInit(void);
 extern void UART_int_init(void);
 extern void UARTIntHandler(void);
 extern void UARTSwitchCases(void);
+
 extern void IntGlobalEnable(void); 
 extern void IntGlobalDisable(void);
+
+extern void Timer0A_Init(unsigned long period);
+extern void Timer0A_Handler (void); 
 extern void GPIOF_Interrupt_Init(void);
 extern void GPIOPortF_Handler(void);
 
@@ -20,11 +24,7 @@ extern bool lostRound;
 extern int position;
 
 extern void roundStart(int roundNum);
-extern void roundStartHelper(int currentRound);
 extern bool roundCheck(void);
-extern void roundWin(void);
-extern void roundLose(void);
-
 
 extern int comArray[];
 extern int userArray[];
@@ -32,3 +32,4 @@ extern int userArray[];
 extern float randomLED;
 extern int currentRound;
 
+extern int timerseconds;

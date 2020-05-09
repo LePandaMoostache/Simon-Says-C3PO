@@ -4,13 +4,13 @@
 #include <time.h> // Used <ctime> as well, does not work
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 #include "inc/hw_types.h"
 #include "inc/hw_memmap.h"
 #include "inc/hw_gpio.h"
 #include "inc/tm4c123gh6pm.h"
 
-#include "driverlib/sysctl.h"
 #include "driverlib/sysctl.h"
 #include "driverlib/pin_map.h"
 #include "driverlib/gpio.h"
