@@ -20,16 +20,4 @@ ie: Round 2 would UARTprintf "2928" very quickly, not being a true counter timer
 - tivaSetup.c: Optimize GPIOF to have lower priority than TIMER0A. Using booleans to determine if SW1 and SW2 can continue to press if player won/lost round X. 
 - Overall: Commenting to make project easier to read.
            Need to verify timing with Logic Analyzer, possibly improve TIMER0A interrupt
-
-NEED TO DO:
-* Timing vary during rounds?
-* Create an array to HOLD COM and USER LED .
-** Compare the arrays.
-* Have Enter Key to NOT work anymore after game has started AS WELL as letting other interrupts go through.
-** (Using IntDisable(UART0_BASE) also disabled the GPIOF Switches.....)
-* Get the game to work properly for ONE ROUND then expand, max can be 5???
-* ALSO WHY SRAND() DOESN'T WORK?? Really need to have rand() to work base on time, not calculated. 
-* Need to add error cases....
-* ALSO WHY THE SWITCH KEEP BOUNCING WHEN THERE IS A SLIGHT DEBOUNCE ALREADY?
-* Need to format code better, probably can put the game function into a dedicated .h/.c files for our eyes.
-* Also I want to do fun easter eggs because tired.
+- game.c/tivaSetup.c: Still need to figure out how to get random numbers and keep them.....
