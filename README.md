@@ -1,9 +1,6 @@
 # Simon-Says-C3PO
 
 # Version 5.0
-* Using Lab 9 as structure.
-* Separated main() and interrupt functions.
-* Use Enter Key to "start game".
 
 Working:
 - tivaSetup.c: Included Timer0A
