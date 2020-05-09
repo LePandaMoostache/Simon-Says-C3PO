@@ -74,6 +74,7 @@ __heap_limit
         THUMB
 		EXTERN	UARTIntHandler
 		EXTERN  GPIOPortF_Handler
+		EXTERN  Timer0A_Handler
 ;******************************************************************************
 ;
 ; The vector table.
@@ -116,7 +117,7 @@ __Vectors
         DCD     IntDefaultHandler           ; ADC Sequence 2
         DCD     IntDefaultHandler           ; ADC Sequence 3
         DCD     IntDefaultHandler           ; Watchdog timer
-        DCD     IntDefaultHandler           ; Timer 0 subtimer A
+        DCD     Timer0A_Handler           ; Timer 0 subtimer A
         DCD     IntDefaultHandler           ; Timer 0 subtimer B
         DCD     IntDefaultHandler           ; Timer 1 subtimer A
         DCD     IntDefaultHandler           ; Timer 1 subtimer B

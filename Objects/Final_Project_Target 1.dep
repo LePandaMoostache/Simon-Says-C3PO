@@ -1,6 +1,6 @@
 Dependencies for Project 'Final_Project', Target 'Target 1': (DO NOT MODIFY !)
 CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
-F (.\startup_rvmdk.S)(0x5EAA1706)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123--pd "__UVISION_VERSION SETA 529"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
+F (.\startup_rvmdk.S)(0x5EB4DCD9)(--cpu Cortex-M4.fp.sp --pd "__EVAL SETA 1" -g --apcs=interwork -IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123--pd "__UVISION_VERSION SETA 529"--list .\listings\startup_rvmdk.lst --xref -o .\objects\startup_rvmdk.o --depend .\objects\startup_rvmdk.d)
 F (..\..\..\..\driverlib\rvmdk\driverlib.lib)(0x5542A771)()
 F (..\..\..\..\utils\uartstdio.c)(0x5E3A4BDF)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\uartstdio.o --omf_browse .\objects\uartstdio.crf --depend .\objects\uartstdio.d)
 I (F:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9BA508)
@@ -17,15 +17,16 @@ I (..\..\..\..\driverlib/rom_map.h)(0x54231AFD)
 I (..\..\..\..\driverlib/sysctl.h)(0x54231AFD)
 I (..\..\..\..\driverlib/uart.h)(0x54231AFD)
 I (..\..\..\..\utils/uartstdio.h)(0x5E3A4BDF)
-F (.\tivaSetup.c)(0x5EB3C08C)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\tivasetup.o --omf_browse .\objects\tivasetup.crf --depend .\objects\tivasetup.d)
-I (tivaSetup.h)(0x5EB3966F)
-I (include.h)(0x5EB39290)
+F (.\tivaSetup.c)(0x5EB4E636)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\tivasetup.o --omf_browse .\objects\tivasetup.crf --depend .\objects\tivasetup.d)
+I (tivaSetup.h)(0x5EB4E5CB)
+I (include.h)(0x5EB4D9D7)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9BA502)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9BA508)
+I (F:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9BA502)
 I (..\..\..\..\inc/hw_types.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_memmap.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_gpio.h)(0x5E3A4BCA)
@@ -38,16 +39,17 @@ I (..\..\..\..\driverlib/timer.h)(0x54231AFD)
 I (..\..\..\..\driverlib/uart.h)(0x54231AFD)
 I (..\..\..\..\utils/uartstdio.h)(0x5E3A4BDF)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5D9BA50A)
-F (.\tivaSetup.h)(0x5EB3966F)()
-F (.\main.c)(0x5EB22D5A)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (tivaSetup.h)(0x5EB3966F)
-I (include.h)(0x5EB39290)
+F (.\tivaSetup.h)(0x5EB4E5CB)()
+F (.\main.c)(0x5EB4E781)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (tivaSetup.h)(0x5EB4E5CB)
+I (include.h)(0x5EB4D9D7)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9BA502)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9BA508)
+I (F:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9BA502)
 I (..\..\..\..\inc/hw_types.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_memmap.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_gpio.h)(0x5E3A4BCA)
@@ -60,15 +62,16 @@ I (..\..\..\..\driverlib/timer.h)(0x54231AFD)
 I (..\..\..\..\driverlib/uart.h)(0x54231AFD)
 I (..\..\..\..\utils/uartstdio.h)(0x5E3A4BDF)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5D9BA50A)
-F (.\game.c)(0x5EB3C128)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\game.o --omf_browse .\objects\game.crf --depend .\objects\game.d)
-I (tivaSetup.h)(0x5EB3966F)
-I (include.h)(0x5EB39290)
+F (.\game.c)(0x5EB4E55E)(-c --cpu Cortex-M4.fp.sp -D__EVAL -g -O0 --apcs=interwork --split_sections -I ..\..\..\.. --c99-IF:\Keil_v5\ARM\RV31\INC-IF:\Keil_v5\ARM\CMSIS\Include-IF:\Keil_v5\ARM\INC\TI\TM4C123-D__UVISION_VERSION="529" -Drvmdk -DPART_TM4C123GH6PM -DTM4C123GH6PM-o .\objects\game.o --omf_browse .\objects\game.crf --depend .\objects\game.d)
+I (tivaSetup.h)(0x5EB4E5CB)
+I (include.h)(0x5EB4D9D7)
 I (F:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x5D9BA508)
 I (F:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9BA502)
 I (F:\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9BA50A)
 I (F:\Keil_v5\ARM\ARMCC\include\string.h)(0x5D9BA508)
+I (F:\Keil_v5\ARM\ARMCC\include\math.h)(0x5D9BA502)
 I (..\..\..\..\inc/hw_types.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_memmap.h)(0x5E3A4BCA)
 I (..\..\..\..\inc/hw_gpio.h)(0x5E3A4BCA)
@@ -81,4 +84,4 @@ I (..\..\..\..\driverlib/timer.h)(0x54231AFD)
 I (..\..\..\..\driverlib/uart.h)(0x54231AFD)
 I (..\..\..\..\utils/uartstdio.h)(0x5E3A4BDF)
 I (F:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x5D9BA50A)
-F (.\include.h)(0x5EB39290)()
+F (.\include.h)(0x5EB4D9D7)()

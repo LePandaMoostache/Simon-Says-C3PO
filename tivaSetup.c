@@ -5,9 +5,13 @@ bool startGame = false;
 bool lostRound = false;
 int currentRound = 1;
 int position = 1;
+int timerseconds = 30; 
+
+
+
 void
 PortFunctionInit(void) {
-		
+
     volatile uint32_t ui32Loop;
 
     // Enable the clock of the GPIO port that is used for the on-board LED and switch.
@@ -17,10 +21,21 @@ PortFunctionInit(void) {
     // Do a dummy read to insert a few cycles after enabling the peripheral.
     //
     ui32Loop = SYSCTL_RCGC2_R;
-	
-	    // Unlock GPIO Port F
+
+    // Unlock GPIO Port F
     GPIO_PORTF_LOCK_R = 0x4C4F434B;
     GPIO_PORTF_CR_R |= 0x01; // allow changes to PF0
+
+    //
+    // Enable pin PF2 for GPIOOutput
+    //
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
+	
+	  //
+    // Enable pin PF3 for GPIOOutput
+    //
+    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
+
     //
     // Enable pin PF0 for GPIOInput
     //
@@ -33,30 +48,20 @@ PortFunctionInit(void) {
 
     //
     //Now modify the configuration of the pins that we unlocked.
-     GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
-     
-		//
+    //
+    GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_0);
+
+    //
     // Enable pin PF4 for GPIOInput
     //
     GPIOPinTypeGPIOInput(GPIO_PORTF_BASE, GPIO_PIN_4);
-		
-		//
+
+    //
     // Enable pin PF1 for GPIOOutput
     //
     GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_1);
-		
-	  //
-    // Enable pin PF2 for GPIOOutput
-    //
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_2);
 
-
-		//
-    // Enable pin PF3 for GPIOOutput
-    //
-    GPIOPinTypeGPIOOutput(GPIO_PORTF_BASE, GPIO_PIN_3);
-
-		// Set the direction of PF4 (SW1) and PF0 (SW2) as input by clearing the bit
+    // Set the direction of PF4 (SW1) and PF0 (SW2) as input by clearing the bit
     GPIO_PORTF_DIR_R &= ~0x11;
 
     // Enable PF4, and PF0 for digital function.
@@ -64,6 +69,7 @@ PortFunctionInit(void) {
 
     //Enable pull-up on PF4 and PF0
     GPIO_PORTF_PUR_R |= 0x11;
+
 }
 
 void UART_int_init()
@@ -113,7 +119,6 @@ void IntGlobalDisable(void) {
 }
 void UARTSwitchCases(void)
 {
-		
 		char newChar;
 		newChar = UARTCharGet(UART0_BASE);
 	
@@ -136,6 +141,45 @@ void UARTSwitchCases(void)
 		}
 }
 
+void Timer0A_Init(unsigned long period)
+{   
+	//
+  // Enable Peripheral Clocks 
+  //
+	IntPriorityGroupingSet(0);
+  SysCtlPeripheralEnable(SYSCTL_PERIPH_TIMER0);
+  TimerConfigure(TIMER0_BASE, TIMER_CFG_PERIODIC); 		// configure for 32-bit timer mode
+  TimerLoadSet(TIMER0_BASE, TIMER_A, period -1);      //reload value
+  IntEnable(INT_TIMER0A);    				// enable interrupt 19 in NVIC (Timer0A)
+	IntPrioritySet(INT_TIMER0A, 0x00);  	 // configure Timer0A interrupt priority as 0
+	IntPriorityMaskSet(0x4);				// 0100.0000 = 40 in hex
+	TimerIntEnable(TIMER0_BASE, TIMER_TIMA_TIMEOUT);      // arm timeout interrupt
+  TimerEnable(TIMER0_BASE, TIMER_A);      // enable timer0A
+}
+
+//interrupt handler for Timer0A
+void Timer0A_Handler (void)
+{
+		// Timer Debounce
+	  NVIC_EN0_R &= ~0x40000000;
+    SysCtlDelay(533333); // Delay for a while
+    NVIC_EN0_R |= 0x40000000;
+	
+	if (startGame == true && lostRound == false) {
+    // acknowledge flag for Timer0A timeout
+		TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
+		
+		//decreases by integer 1 
+		UARTprintf("\r\n%i",timerseconds); 
+		timerseconds--;
+		
+	if (timerseconds == 0) { 
+	roundCheck();
+	}
+	}
+
+}  
+
 /** GPIOF INTERRUPT INITIALIZATION***/
 void GPIOF_Interrupt_Init(void) {
 
@@ -145,7 +189,7 @@ void GPIOF_Interrupt_Init(void) {
     GPIO_PORTF_IM_R |= 0x11; // arm interrupt on PF0 and PF4
     GPIO_PORTF_IS_R &= ~0x11; // PF0 and PF4 are edge-sensitive
     GPIO_PORTF_IBE_R &= ~0x11; // PF0 and PF4 NOT both edges trigger 
-    //GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
+    GPIO_PORTF_IEV_R &= ~0x11;  	// PF0 and PF4 falling edge event
     IntEnable(INT_GPIOF); 
 }
 
@@ -222,6 +266,8 @@ int ledSwitchCases(int count) {
     }
     return count;
 }
+
+
 
 // May need this again for the user side, that way can display confirmation of LED
 // Currently using ledSwitchCases() for both comArray and userArray

@@ -4,7 +4,8 @@ float randomLED = 0;
 int comArray[10];
 int userArray[10];
 int correct = 0; 
-bool wonRound = false;
+unsigned long seconds = 16000000; // false timer
+
 
 void roundStart(int roundNum) {
     if (startGame == true) {
@@ -35,7 +36,6 @@ bool roundCheck(void) {
             UARTprintf("\r\nOrder of LED was: %i", comArray[i]);
             UARTprintf("\r\nUser Order of LED was: %i", userArray[i]);
         if (comArray[i] == userArray[i]) {
-            wonRound = true;
 						correct++;
         } 
 				if (comArray[i] != userArray[i]) {
@@ -43,16 +43,21 @@ bool roundCheck(void) {
 						correct--;
         }
     }
-    if (wonRound == true && correct == currentRound) {
+    if (correct == currentRound) {
         currentRound++; // Counts up to show the next round
         userCount = 0;
         position = 1;
 				correct = 0;
-        memset(userArray, 0, sizeof(userArray)); // clear userArray
+				seconds = seconds / 2;
+				timerseconds = 30 - currentRound;
         roundStart(currentRound); // Jumps back to roundStart
     }
 		if (lostRound == true && correct != currentRound) {
 			UARTprintf("\r\nGAME OVER");
 		}
+		if (timerseconds == 0) {
+			UARTprintf("\r\nRAN OUT OF TIME");
+		}
     return lostRound;
 }
+
