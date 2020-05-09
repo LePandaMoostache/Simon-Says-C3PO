@@ -1,9 +1,11 @@
 #include "tivaSetup.h"
 
-int randomLED = 0;
-int comArray[20];
-int userArray[20];
+float randomLED = 0;
+int comArray[10];
+int userArray[10];
 int correct = 0; 
+bool wonRound = false;
+
 void roundStart(int roundNum) {
     if (startGame == true) {
 
@@ -23,29 +25,25 @@ void roundStart(int roundNum) {
     }
 }
 
-// How to "clear" userArray to allow new inputs? 
 // ledSwitchCases returns an int, so UARTprintf() will not work here.
 // comArray did not keep all the contents of the array
 // WAS ABLE TO CLEAR userARRAY
 bool roundCheck(void) {
 
     for (int i = 1; i < currentRound + 1; i++) {
+						UARTprintf("\r\nIndex: %i", i);
+            UARTprintf("\r\nOrder of LED was: %i", comArray[i]);
+            UARTprintf("\r\nUser Order of LED was: %i", userArray[i]);
         if (comArray[i] == userArray[i]) {
-            UARTprintf("\r\nIndex: %i", i);
-            UARTprintf("\r\nCorrect! Order of LED was: %i", ledSwitchCases(comArray[i]));
-            UARTprintf("\r\nCorrect, User Order of LED was: %i", ledSwitchCases(userArray[i]));
-            lostRound = false;
+            wonRound = true;
 						correct++;
         } 
 				if (comArray[i] != userArray[i]) {
-            UARTprintf("\r\nIndex: %i", i);
-            UARTprintf("\r\nWrong! Order of LED was: %i", ledSwitchCases(comArray[i]));
-            UARTprintf("\r\nWrong, User Order of LED was: %i", ledSwitchCases(userArray[i]));
             lostRound = true;
 						correct--;
         }
     }
-    if (lostRound == false && correct == currentRound) {
+    if (wonRound == true && correct == currentRound) {
         currentRound++; // Counts up to show the next round
         userCount = 0;
         position = 1;
@@ -53,7 +51,7 @@ bool roundCheck(void) {
         memset(userArray, 0, sizeof(userArray)); // clear userArray
         roundStart(currentRound); // Jumps back to roundStart
     }
-		if (lostRound == true) {
+		if (lostRound == true && correct != currentRound) {
 			UARTprintf("\r\nGAME OVER");
 		}
     return lostRound;
