@@ -1,10 +1,9 @@
 #include "include.h"
 
-
 extern void PortFunctionInit(void);
 extern void UART_int_init(void);
 extern void UARTIntHandler(void);
-extern void UARTSwitchCases(void);
+extern void UARTGetNum(void);
 
 extern void IntGlobalEnable(void); 
 extern void IntGlobalDisable(void);
@@ -22,14 +21,13 @@ extern int userCount;
 extern bool startGame;
 extern bool lostRound;
 extern int position;
+extern int currentRound;
+extern int timerseconds;
+extern int nameNum;
 
 extern void roundStart(int roundNum);
-extern bool roundCheck(void);
+extern void roundCheck(void);
 
 extern int comArray[];
 extern int userArray[];
 
-extern float randomLED;
-extern int currentRound;
-
-extern int timerseconds;

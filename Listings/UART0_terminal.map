@@ -41,8 +41,6 @@ Section Cross References
     tivasetup.o(i.GPIOPortF_Handler) refers to tivasetup.o(.data) for startGame
     tivasetup.o(i.GPIOPortF_Handler) refers to game.o(.bss) for userArray
     tivasetup.o(i.PortFunctionInit) refers to gpio.o(i.GPIOPinTypeGPIOOutput) for GPIOPinTypeGPIOOutput
-    tivasetup.o(i.PortFunctionInit) refers to gpio.o(i.GPIOPinTypeGPIOInput) for GPIOPinTypeGPIOInput
-    tivasetup.o(i.Timer0A_Handler) refers to sysctl.o(.emb_text) for SysCtlDelay
     tivasetup.o(i.Timer0A_Handler) refers to timer.o(i.TimerIntClear) for TimerIntClear
     tivasetup.o(i.Timer0A_Handler) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     tivasetup.o(i.Timer0A_Handler) refers to game.o(i.roundCheck) for roundCheck
@@ -56,29 +54,30 @@ Section Cross References
     tivasetup.o(i.Timer0A_Init) refers to interrupt.o(i.IntPriorityMaskSet) for IntPriorityMaskSet
     tivasetup.o(i.Timer0A_Init) refers to timer.o(i.TimerIntEnable) for TimerIntEnable
     tivasetup.o(i.Timer0A_Init) refers to timer.o(i.TimerEnable) for TimerEnable
+    tivasetup.o(i.UARTGetNum) refers to uart.o(i.UARTCharGet) for UARTCharGet
+    tivasetup.o(i.UARTGetNum) refers to strcmpv7m.o(.text) for strcmp
+    tivasetup.o(i.UARTGetNum) refers to uartstdio.o(i.UARTprintf) for UARTprintf
+    tivasetup.o(i.UARTGetNum) refers to game.o(i.roundStart) for roundStart
+    tivasetup.o(i.UARTGetNum) refers to tivasetup.o(.data) for charNum
     tivasetup.o(i.UARTIntHandler) refers to uart.o(i.UARTIntClear) for UARTIntClear
     tivasetup.o(i.UARTIntHandler) refers to uart.o(i.UARTIntStatus) for UARTIntStatus
-    tivasetup.o(i.UARTIntHandler) refers to tivasetup.o(i.UARTSwitchCases) for UARTSwitchCases
-    tivasetup.o(i.UARTSwitchCases) refers to uart.o(i.UARTCharGet) for UARTCharGet
-    tivasetup.o(i.UARTSwitchCases) refers to uartstdio.o(i.UARTprintf) for UARTprintf
-    tivasetup.o(i.UARTSwitchCases) refers to game.o(i.roundStart) for roundStart
-    tivasetup.o(i.UARTSwitchCases) refers to tivasetup.o(.data) for startGame
+    tivasetup.o(i.UARTIntHandler) refers to tivasetup.o(i.UARTGetNum) for UARTGetNum
     tivasetup.o(i.UART_int_init) refers to sysctl.o(i.SysCtlPeripheralEnable) for SysCtlPeripheralEnable
     tivasetup.o(i.UART_int_init) refers to gpio.o(i.GPIOPinConfigure) for GPIOPinConfigure
     tivasetup.o(i.UART_int_init) refers to gpio.o(i.GPIOPinTypeUART) for GPIOPinTypeUART
-    tivasetup.o(i.UART_int_init) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
-    tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTConfigSetExpClk) for UARTConfigSetExpClk
+    tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTClockSourceSet) for UARTClockSourceSet
+    tivasetup.o(i.UART_int_init) refers to uartstdio.o(i.UARTStdioConfig) for UARTStdioConfig
     tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTFlowControlSet) for UARTFlowControlSet
-    tivasetup.o(i.UART_int_init) refers to interrupt.o(i.IntPrioritySet) for IntPrioritySet
     tivasetup.o(i.UART_int_init) refers to interrupt.o(i.IntMasterEnable) for IntMasterEnable
     tivasetup.o(i.UART_int_init) refers to interrupt.o(i.IntEnable) for IntEnable
     tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTIntEnable) for UARTIntEnable
-    tivasetup.o(i.UART_int_init) refers to uartstdio.o(i.UARTStdioConfig) for UARTStdioConfig
+    tivasetup.o(i.ledSwitchCases) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
     tivasetup.o(i.ledSwitchCases) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     tivasetup.o(i.ledSwitchCases) refers to sysctl.o(.emb_text) for SysCtlDelay
     tivasetup.o(i.ledSwitchCases) refers to gpio.o(i.GPIOPinWrite) for GPIOPinWrite
     tivasetup.o(i.userLEDSwitchCases) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     tivasetup.o(i.userLEDSwitchCases) refers to sysctl.o(.emb_text) for SysCtlDelay
+    main.o(i.main) refers to sysctl.o(i.SysCtlClockSet) for SysCtlClockSet
     main.o(i.main) refers to tivasetup.o(i.PortFunctionInit) for PortFunctionInit
     main.o(i.main) refers to tivasetup.o(i.UART_int_init) for UART_int_init
     main.o(i.main) refers to tivasetup.o(i.GPIOF_Interrupt_Init) for GPIOF_Interrupt_Init
@@ -86,15 +85,14 @@ Section Cross References
     main.o(i.main) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     main.o(i.main) refers to main.o(.conststring) for .conststring
     game.o(i.roundCheck) refers to uartstdio.o(i.UARTprintf) for UARTprintf
+    game.o(i.roundCheck) refers to sysctl.o(.emb_text) for SysCtlDelay
     game.o(i.roundCheck) refers to game.o(i.roundStart) for roundStart
     game.o(i.roundCheck) refers to game.o(.bss) for comArray
-    game.o(i.roundCheck) refers to game.o(.data) for correct
     game.o(i.roundCheck) refers to tivasetup.o(.data) for lostRound
     game.o(i.roundStart) refers to uartstdio.o(i.UARTprintf) for UARTprintf
-    game.o(i.roundStart) refers to rand.o(.emb_text) for rand
     game.o(i.roundStart) refers to tivasetup.o(i.ledSwitchCases) for ledSwitchCases
+    game.o(i.roundStart) refers to rand.o(.emb_text) for rand
     game.o(i.roundStart) refers to tivasetup.o(.data) for startGame
-    game.o(i.roundStart) refers to game.o(.data) for randomLED
     game.o(i.roundStart) refers to game.o(.bss) for comArray
     gpio.o(i.GPIOIntRegister) refers to interrupt.o(i.IntRegister) for IntRegister
     gpio.o(i.GPIOIntRegister) refers to interrupt.o(i.IntEnable) for IntEnable
@@ -312,7 +310,6 @@ Removing Unused input sections from the image.
     Removing uartstdio.o(i.UARTgets), (144 bytes).
     Removing tivasetup.o(i.IntGlobalDisable), (4 bytes).
     Removing tivasetup.o(i.IntGlobalEnable), (4 bytes).
-    Removing main.o(.data), (4 bytes).
     Removing gpio.o(i.GPIOADCTriggerDisable), (14 bytes).
     Removing gpio.o(i.GPIOADCTriggerEnable), (14 bytes).
     Removing gpio.o(i.GPIODMATriggerDisable), (14 bytes).
@@ -335,6 +332,7 @@ Removing Unused input sections from the image.
     Removing gpio.o(i.GPIOPinTypeEPI), (28 bytes).
     Removing gpio.o(i.GPIOPinTypeEthernetLED), (28 bytes).
     Removing gpio.o(i.GPIOPinTypeEthernetMII), (28 bytes).
+    Removing gpio.o(i.GPIOPinTypeGPIOInput), (28 bytes).
     Removing gpio.o(i.GPIOPinTypeGPIOOutputOD), (28 bytes).
     Removing gpio.o(i.GPIOPinTypeI2C), (28 bytes).
     Removing gpio.o(i.GPIOPinTypeI2CSCL), (28 bytes).
@@ -370,7 +368,6 @@ Removing Unused input sections from the image.
     Removing sysctl.o(i.SysCtlAltClkConfig), (12 bytes).
     Removing sysctl.o(i.SysCtlClockFreqSet), (712 bytes).
     Removing sysctl.o(i.SysCtlClockOutConfig), (16 bytes).
-    Removing sysctl.o(i.SysCtlClockSet), (288 bytes).
     Removing sysctl.o(i.SysCtlDeepSleep), (32 bytes).
     Removing sysctl.o(i.SysCtlDeepSleepClockConfigSet), (112 bytes).
     Removing sysctl.o(i.SysCtlDeepSleepClockSet), (12 bytes).
@@ -462,7 +459,6 @@ Removing Unused input sections from the image.
     Removing uart.o(i.UARTCharPutNonBlocking), (16 bytes).
     Removing uart.o(i.UARTCharsAvail), (10 bytes).
     Removing uart.o(i.UARTClockSourceGet), (6 bytes).
-    Removing uart.o(i.UARTClockSourceSet), (6 bytes).
     Removing uart.o(i.UARTConfigGetExpClk), (46 bytes).
     Removing uart.o(i.UARTDMADisable), (10 bytes).
     Removing uart.o(i.UARTDMAEnable), (8 bytes).
@@ -492,7 +488,7 @@ Removing Unused input sections from the image.
     Removing uart.o(i.UARTTxIntModeSet), (12 bytes).
     Removing uart.o(.constdata), (128 bytes).
 
-183 unused section(s) (total 6608 bytes) removed from the image.
+181 unused section(s) (total 6338 bytes) removed from the image.
 
 ==============================================================================
 
@@ -507,47 +503,48 @@ Image Symbol Table
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
-    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry2.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  __rtentry4.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_exit.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_wrch.o ABSOLUTE
+    ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/heapalloc.c                      0x00000000   Number         0  hrguard.o ABSOLUTE
     ../clib/heapaux.c                        0x00000000   Number         0  heapauxi.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
-    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown.o ABSOLUTE
+    ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  rand.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  rand.o ABSOLUTE
@@ -625,94 +622,95 @@ Image Symbol Table
     .text                                    0x00000390   Section       24  startup_rvmdk.o(.text)
     $v0                                      0x00000390   Number         0  startup_rvmdk.o(.text)
     .text                                    0x000003a8   Section        0  rand.o(.text)
-    .text                                    0x000003e4   Section        0  heapauxi.o(.text)
-    .text                                    0x000003ea   Section       74  sys_stackheap_outer.o(.text)
-    .text                                    0x00000434   Section        0  exit.o(.text)
-    .text                                    0x00000448   Section        8  libspace.o(.text)
-    .text                                    0x00000450   Section        2  use_no_semi.o(.text)
-    .text                                    0x00000452   Section        0  indicate_semi.o(.text)
-    .text                                    0x00000454   Section        0  sys_exit.o(.text)
-    i.GPIODirModeSet                         0x00000460   Section        0  gpio.o(i.GPIODirModeSet)
-    i.GPIOF_Interrupt_Init                   0x00000488   Section        0  tivasetup.o(i.GPIOF_Interrupt_Init)
-    i.GPIOPadConfigSet                       0x000004e0   Section        0  gpio.o(i.GPIOPadConfigSet)
-    i.GPIOPinConfigure                       0x0000061c   Section        0  gpio.o(i.GPIOPinConfigure)
-    i.GPIOPinTypeGPIOInput                   0x00000664   Section        0  gpio.o(i.GPIOPinTypeGPIOInput)
-    i.GPIOPinTypeGPIOOutput                  0x00000680   Section        0  gpio.o(i.GPIOPinTypeGPIOOutput)
-    i.GPIOPinTypeUART                        0x0000069c   Section        0  gpio.o(i.GPIOPinTypeUART)
-    i.GPIOPinWrite                           0x000006b8   Section        0  gpio.o(i.GPIOPinWrite)
-    i.GPIOPortF_Handler                      0x000006c0   Section        0  tivasetup.o(i.GPIOPortF_Handler)
-    i.IntEnable                              0x00000800   Section        0  interrupt.o(i.IntEnable)
-    i.IntMasterEnable                        0x00000864   Section        0  interrupt.o(i.IntMasterEnable)
-    i.IntPriorityGroupingSet                 0x00000874   Section        0  interrupt.o(i.IntPriorityGroupingSet)
-    i.IntPriorityMaskSet                     0x00000890   Section        0  interrupt.o(i.IntPriorityMaskSet)
-    i.IntPrioritySet                         0x00000894   Section        0  interrupt.o(i.IntPrioritySet)
-    i.PortFunctionInit                       0x000008bc   Section        0  tivasetup.o(i.PortFunctionInit)
-    i.SysCtlClockGet                         0x00000958   Section        0  sysctl.o(i.SysCtlClockGet)
-    i.SysCtlPeripheralEnable                 0x00000abc   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
-    i.SysCtlPeripheralPresent                0x00000ae4   Section        0  sysctl.o(i.SysCtlPeripheralPresent)
-    i.Timer0A_Handler                        0x00000b10   Section        0  tivasetup.o(i.Timer0A_Handler)
-    i.Timer0A_Init                           0x00000b94   Section        0  tivasetup.o(i.Timer0A_Init)
-    i.TimerConfigure                         0x00000be4   Section        0  timer.o(i.TimerConfigure)
-    i.TimerEnable                            0x00000c44   Section        0  timer.o(i.TimerEnable)
-    i.TimerIntClear                          0x00000c52   Section        0  timer.o(i.TimerIntClear)
-    i.TimerIntEnable                         0x00000c56   Section        0  timer.o(i.TimerIntEnable)
-    i.TimerLoadSet                           0x00000c5e   Section        0  timer.o(i.TimerLoadSet)
-    i.UARTCharGet                            0x00000c70   Section        0  uart.o(i.UARTCharGet)
-    i.UARTCharPut                            0x00000c7c   Section        0  uart.o(i.UARTCharPut)
-    i.UARTConfigSetExpClk                    0x00000c88   Section        0  uart.o(i.UARTConfigSetExpClk)
-    i.UARTEnable                             0x00000cf6   Section        0  uart.o(i.UARTEnable)
-    i.UARTFlowControlSet                     0x00000d0a   Section        0  uart.o(i.UARTFlowControlSet)
-    i.UARTIntClear                           0x00000d16   Section        0  uart.o(i.UARTIntClear)
-    i.UARTIntEnable                          0x00000d1a   Section        0  uart.o(i.UARTIntEnable)
-    i.UARTIntHandler                         0x00000d24   Section        0  tivasetup.o(i.UARTIntHandler)
-    i.UARTIntStatus                          0x00000d44   Section        0  uart.o(i.UARTIntStatus)
-    i.UARTStdioConfig                        0x00000d50   Section        0  uartstdio.o(i.UARTStdioConfig)
-    i.UARTSwitchCases                        0x00000da0   Section        0  tivasetup.o(i.UARTSwitchCases)
-    i.UART_int_init                          0x00000e10   Section        0  tivasetup.o(i.UART_int_init)
-    i.UARTprintf                             0x00000e8c   Section        0  uartstdio.o(i.UARTprintf)
-    i.UARTvprintf                            0x00000ea8   Section        0  uartstdio.o(i.UARTvprintf)
-    i.UARTwrite                              0x000010f8   Section        0  uartstdio.o(i.UARTwrite)
-    i.ledSwitchCases                         0x0000112c   Section        0  tivasetup.o(i.ledSwitchCases)
-    i.main                                   0x000011dc   Section        0  main.o(i.main)
-    i.roundCheck                             0x000012a0   Section        0  game.o(i.roundCheck)
-    i.roundStart                             0x00001404   Section        0  game.o(i.roundStart)
-    i.userLEDSwitchCases                     0x000014b8   Section        0  tivasetup.o(i.userLEDSwitchCases)
-    x$fpl$fpinit                             0x00001578   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00001578   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x00001584   Section       28  uartstdio.o(.constdata)
-    g_pcHex                                  0x00001584   Data           4  uartstdio.o(.constdata)
-    g_ui32UARTBase                           0x00001588   Data          12  uartstdio.o(.constdata)
-    g_ui32UARTPeriph                         0x00001594   Data          12  uartstdio.o(.constdata)
-    .constdata                               0x000015a0   Section      528  gpio.o(.constdata)
-    g_ppui32GPIOIntMapBlizzard               0x000015a0   Data         192  gpio.o(.constdata)
-    g_ppui32GPIOIntMapSnowflake              0x00001660   Data         192  gpio.o(.constdata)
-    g_pui32GPIOBaseAddrs                     0x00001720   Data         144  gpio.o(.constdata)
-    .constdata                               0x000017b0   Section      268  interrupt.o(.constdata)
-    g_pui32Priority                          0x000017b0   Data          32  interrupt.o(.constdata)
-    g_pui32Regs                              0x000017d0   Data         156  interrupt.o(.constdata)
-    g_pui32EnRegs                            0x0000186c   Data          20  interrupt.o(.constdata)
-    g_pui32Dii16Regs                         0x00001880   Data          20  interrupt.o(.constdata)
-    g_pui32PendRegs                          0x00001894   Data          20  interrupt.o(.constdata)
-    g_pui32UnpendRegs                        0x000018a8   Data          20  interrupt.o(.constdata)
-    .constdata                               0x000018bc   Section      452  sysctl.o(.constdata)
-    g_pui32VCOFrequencies                    0x000018bc   Data           8  sysctl.o(.constdata)
-    g_pui32Xtals                             0x000018c4   Data         108  sysctl.o(.constdata)
-    g_pppui32XTALtoVCO                       0x00001930   Data         288  sysctl.o(.constdata)
-    g_sXTALtoMEMTIM                          0x00001a50   Data          48  sysctl.o(.constdata)
-    .conststring                             0x00001a80   Section       17  uartstdio.o(.conststring)
-    .conststring                             0x00001a94   Section       83  main.o(.conststring)
+    .text                                    0x000003e4   Section      128  strcmpv7m.o(.text)
+    .text                                    0x00000464   Section        0  heapauxi.o(.text)
+    .text                                    0x0000046a   Section       74  sys_stackheap_outer.o(.text)
+    .text                                    0x000004b4   Section        0  exit.o(.text)
+    .text                                    0x000004c8   Section        8  libspace.o(.text)
+    .text                                    0x000004d0   Section        2  use_no_semi.o(.text)
+    .text                                    0x000004d2   Section        0  indicate_semi.o(.text)
+    .text                                    0x000004d4   Section        0  sys_exit.o(.text)
+    i.GPIODirModeSet                         0x000004e0   Section        0  gpio.o(i.GPIODirModeSet)
+    i.GPIOF_Interrupt_Init                   0x00000508   Section        0  tivasetup.o(i.GPIOF_Interrupt_Init)
+    i.GPIOPadConfigSet                       0x00000560   Section        0  gpio.o(i.GPIOPadConfigSet)
+    i.GPIOPinConfigure                       0x0000069c   Section        0  gpio.o(i.GPIOPinConfigure)
+    i.GPIOPinTypeGPIOOutput                  0x000006e4   Section        0  gpio.o(i.GPIOPinTypeGPIOOutput)
+    i.GPIOPinTypeUART                        0x00000700   Section        0  gpio.o(i.GPIOPinTypeUART)
+    i.GPIOPinWrite                           0x0000071c   Section        0  gpio.o(i.GPIOPinWrite)
+    i.GPIOPortF_Handler                      0x00000724   Section        0  tivasetup.o(i.GPIOPortF_Handler)
+    i.IntEnable                              0x00000864   Section        0  interrupt.o(i.IntEnable)
+    i.IntMasterEnable                        0x000008c8   Section        0  interrupt.o(i.IntMasterEnable)
+    i.IntPriorityGroupingSet                 0x000008d8   Section        0  interrupt.o(i.IntPriorityGroupingSet)
+    i.IntPriorityMaskSet                     0x000008f4   Section        0  interrupt.o(i.IntPriorityMaskSet)
+    i.IntPrioritySet                         0x000008f8   Section        0  interrupt.o(i.IntPrioritySet)
+    i.PortFunctionInit                       0x00000920   Section        0  tivasetup.o(i.PortFunctionInit)
+    i.SysCtlClockGet                         0x000009a0   Section        0  sysctl.o(i.SysCtlClockGet)
+    i.SysCtlClockSet                         0x00000b04   Section        0  sysctl.o(i.SysCtlClockSet)
+    i.SysCtlPeripheralEnable                 0x00000c24   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
+    i.SysCtlPeripheralPresent                0x00000c4c   Section        0  sysctl.o(i.SysCtlPeripheralPresent)
+    i.Timer0A_Handler                        0x00000c78   Section        0  tivasetup.o(i.Timer0A_Handler)
+    i.Timer0A_Init                           0x00000cc8   Section        0  tivasetup.o(i.Timer0A_Init)
+    i.TimerConfigure                         0x00000d18   Section        0  timer.o(i.TimerConfigure)
+    i.TimerEnable                            0x00000d78   Section        0  timer.o(i.TimerEnable)
+    i.TimerIntClear                          0x00000d86   Section        0  timer.o(i.TimerIntClear)
+    i.TimerIntEnable                         0x00000d8a   Section        0  timer.o(i.TimerIntEnable)
+    i.TimerLoadSet                           0x00000d92   Section        0  timer.o(i.TimerLoadSet)
+    i.UARTCharGet                            0x00000da4   Section        0  uart.o(i.UARTCharGet)
+    i.UARTCharPut                            0x00000db0   Section        0  uart.o(i.UARTCharPut)
+    i.UARTClockSourceSet                     0x00000dbc   Section        0  uart.o(i.UARTClockSourceSet)
+    i.UARTConfigSetExpClk                    0x00000dc2   Section        0  uart.o(i.UARTConfigSetExpClk)
+    i.UARTEnable                             0x00000e30   Section        0  uart.o(i.UARTEnable)
+    i.UARTFlowControlSet                     0x00000e44   Section        0  uart.o(i.UARTFlowControlSet)
+    i.UARTGetNum                             0x00000e50   Section        0  tivasetup.o(i.UARTGetNum)
+    i.UARTIntClear                           0x00000ed0   Section        0  uart.o(i.UARTIntClear)
+    i.UARTIntEnable                          0x00000ed4   Section        0  uart.o(i.UARTIntEnable)
+    i.UARTIntHandler                         0x00000edc   Section        0  tivasetup.o(i.UARTIntHandler)
+    i.UARTIntStatus                          0x00000efc   Section        0  uart.o(i.UARTIntStatus)
+    i.UARTStdioConfig                        0x00000f08   Section        0  uartstdio.o(i.UARTStdioConfig)
+    i.UART_int_init                          0x00000f58   Section        0  tivasetup.o(i.UART_int_init)
+    i.UARTprintf                             0x00000fc0   Section        0  uartstdio.o(i.UARTprintf)
+    i.UARTvprintf                            0x00000fdc   Section        0  uartstdio.o(i.UARTvprintf)
+    i.UARTwrite                              0x0000122c   Section        0  uartstdio.o(i.UARTwrite)
+    i.ledSwitchCases                         0x00001260   Section        0  tivasetup.o(i.ledSwitchCases)
+    i.main                                   0x00001314   Section        0  main.o(i.main)
+    i.roundCheck                             0x000013f4   Section        0  game.o(i.roundCheck)
+    i.roundStart                             0x00001554   Section        0  game.o(i.roundStart)
+    i.userLEDSwitchCases                     0x00001640   Section        0  tivasetup.o(i.userLEDSwitchCases)
+    x$fpl$fpinit                             0x00001700   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00001700   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x0000170c   Section       28  uartstdio.o(.constdata)
+    g_pcHex                                  0x0000170c   Data           4  uartstdio.o(.constdata)
+    g_ui32UARTBase                           0x00001710   Data          12  uartstdio.o(.constdata)
+    g_ui32UARTPeriph                         0x0000171c   Data          12  uartstdio.o(.constdata)
+    .constdata                               0x00001728   Section      528  gpio.o(.constdata)
+    g_ppui32GPIOIntMapBlizzard               0x00001728   Data         192  gpio.o(.constdata)
+    g_ppui32GPIOIntMapSnowflake              0x000017e8   Data         192  gpio.o(.constdata)
+    g_pui32GPIOBaseAddrs                     0x000018a8   Data         144  gpio.o(.constdata)
+    .constdata                               0x00001938   Section      268  interrupt.o(.constdata)
+    g_pui32Priority                          0x00001938   Data          32  interrupt.o(.constdata)
+    g_pui32Regs                              0x00001958   Data         156  interrupt.o(.constdata)
+    g_pui32EnRegs                            0x000019f4   Data          20  interrupt.o(.constdata)
+    g_pui32Dii16Regs                         0x00001a08   Data          20  interrupt.o(.constdata)
+    g_pui32PendRegs                          0x00001a1c   Data          20  interrupt.o(.constdata)
+    g_pui32UnpendRegs                        0x00001a30   Data          20  interrupt.o(.constdata)
+    .constdata                               0x00001a44   Section      452  sysctl.o(.constdata)
+    g_pui32VCOFrequencies                    0x00001a44   Data           8  sysctl.o(.constdata)
+    g_pui32Xtals                             0x00001a4c   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x00001ab8   Data         288  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x00001bd8   Data          48  sysctl.o(.constdata)
+    .conststring                             0x00001c08   Section       17  uartstdio.o(.conststring)
+    .conststring                             0x00001c1c   Section       83  main.o(.conststring)
     .data                                    0x20000000   Section        5  uartstdio.o(.data)
     g_ui32Base                               0x20000000   Data           4  uartstdio.o(.data)
     bLastWasCR                               0x20000004   Data           1  uartstdio.o(.data)
-    .data                                    0x20000008   Section       20  tivasetup.o(.data)
-    .data                                    0x2000001c   Section       12  game.o(.data)
-    .bss                                     0x20000028   Section       80  game.o(.bss)
-    .bss                                     0x20000078   Section      228  rand.o(.bss)
-    .bss                                     0x2000015c   Section       96  libspace.o(.bss)
-    HEAP                                     0x200001c0   Section        0  startup_rvmdk.o(HEAP)
-    STACK                                    0x200001c0   Section      256  startup_rvmdk.o(STACK)
-    HeapMem                                  0x200001c0   Data           0  startup_rvmdk.o(HEAP)
-    StackMem                                 0x200001c0   Data           0  startup_rvmdk.o(STACK)
+    .data                                    0x20000008   Section       28  tivasetup.o(.data)
+    .bss                                     0x20000024   Section       80  game.o(.bss)
+    .bss                                     0x20000074   Section      228  rand.o(.bss)
+    .bss                                     0x20000158   Section       96  libspace.o(.bss)
+    HEAP                                     0x200001b8   Section        0  startup_rvmdk.o(HEAP)
+    STACK                                    0x200001b8   Section      256  startup_rvmdk.o(STACK)
+    HeapMem                                  0x200001b8   Data           0  startup_rvmdk.o(HEAP)
+    StackMem                                 0x200001b8   Data           0  startup_rvmdk.o(STACK)
 
     Global Symbols
 
@@ -809,82 +807,83 @@ Image Symbol Table
     __user_initial_stackheap                 0x00000391   Thumb Code     0  startup_rvmdk.o(.text)
     srand                                    0x000003a9   Thumb Code    42  rand.o(.text)
     _rand_init                               0x000003d3   Thumb Code     4  rand.o(.text)
-    __use_two_region_memory                  0x000003e5   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_escrow$2region                 0x000003e7   Thumb Code     2  heapauxi.o(.text)
-    __rt_heap_expand$2region                 0x000003e9   Thumb Code     2  heapauxi.o(.text)
-    __user_setup_stackheap                   0x000003eb   Thumb Code    74  sys_stackheap_outer.o(.text)
-    exit                                     0x00000435   Thumb Code    18  exit.o(.text)
-    __user_libspace                          0x00000449   Thumb Code     8  libspace.o(.text)
-    __user_perproc_libspace                  0x00000449   Thumb Code     0  libspace.o(.text)
-    __user_perthread_libspace                0x00000449   Thumb Code     0  libspace.o(.text)
-    __I$use$semihosting                      0x00000451   Thumb Code     0  use_no_semi.o(.text)
-    __use_no_semihosting_swi                 0x00000451   Thumb Code     2  use_no_semi.o(.text)
-    __semihosting_library_function           0x00000453   Thumb Code     0  indicate_semi.o(.text)
-    _sys_exit                                0x00000455   Thumb Code     8  sys_exit.o(.text)
-    GPIODirModeSet                           0x00000461   Thumb Code    40  gpio.o(i.GPIODirModeSet)
-    GPIOF_Interrupt_Init                     0x00000489   Thumb Code    78  tivasetup.o(i.GPIOF_Interrupt_Init)
-    GPIOPadConfigSet                         0x000004e1   Thumb Code   314  gpio.o(i.GPIOPadConfigSet)
-    GPIOPinConfigure                         0x0000061d   Thumb Code    64  gpio.o(i.GPIOPinConfigure)
-    GPIOPinTypeGPIOInput                     0x00000665   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOInput)
-    GPIOPinTypeGPIOOutput                    0x00000681   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOOutput)
-    GPIOPinTypeUART                          0x0000069d   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
-    GPIOPinWrite                             0x000006b9   Thumb Code     6  gpio.o(i.GPIOPinWrite)
-    GPIOPortF_Handler                        0x000006c1   Thumb Code   228  tivasetup.o(i.GPIOPortF_Handler)
-    IntEnable                                0x00000801   Thumb Code    92  interrupt.o(i.IntEnable)
-    IntMasterEnable                          0x00000865   Thumb Code    14  interrupt.o(i.IntMasterEnable)
-    IntPriorityGroupingSet                   0x00000875   Thumb Code    20  interrupt.o(i.IntPriorityGroupingSet)
-    IntPriorityMaskSet                       0x00000891   Thumb Code     4  interrupt.o(i.IntPriorityMaskSet)
-    IntPrioritySet                           0x00000895   Thumb Code    36  interrupt.o(i.IntPrioritySet)
-    PortFunctionInit                         0x000008bd   Thumb Code   132  tivasetup.o(i.PortFunctionInit)
-    SysCtlClockGet                           0x00000959   Thumb Code   314  sysctl.o(i.SysCtlClockGet)
-    SysCtlPeripheralEnable                   0x00000abd   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
-    SysCtlPeripheralPresent                  0x00000ae5   Thumb Code    40  sysctl.o(i.SysCtlPeripheralPresent)
-    Timer0A_Handler                          0x00000b11   Thumb Code    98  tivasetup.o(i.Timer0A_Handler)
-    Timer0A_Init                             0x00000b95   Thumb Code    72  tivasetup.o(i.Timer0A_Init)
-    TimerConfigure                           0x00000be5   Thumb Code    88  timer.o(i.TimerConfigure)
-    TimerEnable                              0x00000c45   Thumb Code    14  timer.o(i.TimerEnable)
-    TimerIntClear                            0x00000c53   Thumb Code     4  timer.o(i.TimerIntClear)
-    TimerIntEnable                           0x00000c57   Thumb Code     8  timer.o(i.TimerIntEnable)
-    TimerLoadSet                             0x00000c5f   Thumb Code    18  timer.o(i.TimerLoadSet)
-    UARTCharGet                              0x00000c71   Thumb Code    12  uart.o(i.UARTCharGet)
-    UARTCharPut                              0x00000c7d   Thumb Code    12  uart.o(i.UARTCharPut)
-    UARTConfigSetExpClk                      0x00000c89   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
-    UARTEnable                               0x00000cf7   Thumb Code    20  uart.o(i.UARTEnable)
-    UARTFlowControlSet                       0x00000d0b   Thumb Code    12  uart.o(i.UARTFlowControlSet)
-    UARTIntClear                             0x00000d17   Thumb Code     4  uart.o(i.UARTIntClear)
-    UARTIntEnable                            0x00000d1b   Thumb Code     8  uart.o(i.UARTIntEnable)
-    UARTIntHandler                           0x00000d25   Thumb Code    26  tivasetup.o(i.UARTIntHandler)
-    UARTIntStatus                            0x00000d45   Thumb Code    10  uart.o(i.UARTIntStatus)
-    UARTStdioConfig                          0x00000d51   Thumb Code    68  uartstdio.o(i.UARTStdioConfig)
-    UARTSwitchCases                          0x00000da1   Thumb Code    58  tivasetup.o(i.UARTSwitchCases)
-    UART_int_init                            0x00000e11   Thumb Code   108  tivasetup.o(i.UART_int_init)
-    UARTprintf                               0x00000e8d   Thumb Code    26  uartstdio.o(i.UARTprintf)
-    UARTvprintf                              0x00000ea9   Thumb Code   574  uartstdio.o(i.UARTvprintf)
-    UARTwrite                                0x000010f9   Thumb Code    46  uartstdio.o(i.UARTwrite)
-    ledSwitchCases                           0x0000112d   Thumb Code   130  tivasetup.o(i.ledSwitchCases)
-    main                                     0x000011dd   Thumb Code    46  main.o(i.main)
-    roundCheck                               0x000012a1   Thumb Code   222  game.o(i.roundCheck)
-    roundStart                               0x00001405   Thumb Code   108  game.o(i.roundStart)
-    userLEDSwitchCases                       0x000014b9   Thumb Code   124  tivasetup.o(i.userLEDSwitchCases)
-    _fp_init                                 0x00001579   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00001581   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00001581   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x00001ae8   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001b08   Number         0  anon$$obj.o(Region$$Table)
+    strcmp                                   0x000003e5   Thumb Code   128  strcmpv7m.o(.text)
+    __use_two_region_memory                  0x00000465   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_escrow$2region                 0x00000467   Thumb Code     2  heapauxi.o(.text)
+    __rt_heap_expand$2region                 0x00000469   Thumb Code     2  heapauxi.o(.text)
+    __user_setup_stackheap                   0x0000046b   Thumb Code    74  sys_stackheap_outer.o(.text)
+    exit                                     0x000004b5   Thumb Code    18  exit.o(.text)
+    __user_libspace                          0x000004c9   Thumb Code     8  libspace.o(.text)
+    __user_perproc_libspace                  0x000004c9   Thumb Code     0  libspace.o(.text)
+    __user_perthread_libspace                0x000004c9   Thumb Code     0  libspace.o(.text)
+    __I$use$semihosting                      0x000004d1   Thumb Code     0  use_no_semi.o(.text)
+    __use_no_semihosting_swi                 0x000004d1   Thumb Code     2  use_no_semi.o(.text)
+    __semihosting_library_function           0x000004d3   Thumb Code     0  indicate_semi.o(.text)
+    _sys_exit                                0x000004d5   Thumb Code     8  sys_exit.o(.text)
+    GPIODirModeSet                           0x000004e1   Thumb Code    40  gpio.o(i.GPIODirModeSet)
+    GPIOF_Interrupt_Init                     0x00000509   Thumb Code    78  tivasetup.o(i.GPIOF_Interrupt_Init)
+    GPIOPadConfigSet                         0x00000561   Thumb Code   314  gpio.o(i.GPIOPadConfigSet)
+    GPIOPinConfigure                         0x0000069d   Thumb Code    64  gpio.o(i.GPIOPinConfigure)
+    GPIOPinTypeGPIOOutput                    0x000006e5   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOOutput)
+    GPIOPinTypeUART                          0x00000701   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
+    GPIOPinWrite                             0x0000071d   Thumb Code     6  gpio.o(i.GPIOPinWrite)
+    GPIOPortF_Handler                        0x00000725   Thumb Code   228  tivasetup.o(i.GPIOPortF_Handler)
+    IntEnable                                0x00000865   Thumb Code    92  interrupt.o(i.IntEnable)
+    IntMasterEnable                          0x000008c9   Thumb Code    14  interrupt.o(i.IntMasterEnable)
+    IntPriorityGroupingSet                   0x000008d9   Thumb Code    20  interrupt.o(i.IntPriorityGroupingSet)
+    IntPriorityMaskSet                       0x000008f5   Thumb Code     4  interrupt.o(i.IntPriorityMaskSet)
+    IntPrioritySet                           0x000008f9   Thumb Code    36  interrupt.o(i.IntPrioritySet)
+    PortFunctionInit                         0x00000921   Thumb Code   104  tivasetup.o(i.PortFunctionInit)
+    SysCtlClockGet                           0x000009a1   Thumb Code   314  sysctl.o(i.SysCtlClockGet)
+    SysCtlClockSet                           0x00000b05   Thumb Code   270  sysctl.o(i.SysCtlClockSet)
+    SysCtlPeripheralEnable                   0x00000c25   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
+    SysCtlPeripheralPresent                  0x00000c4d   Thumb Code    40  sysctl.o(i.SysCtlPeripheralPresent)
+    Timer0A_Handler                          0x00000c79   Thumb Code    56  tivasetup.o(i.Timer0A_Handler)
+    Timer0A_Init                             0x00000cc9   Thumb Code    72  tivasetup.o(i.Timer0A_Init)
+    TimerConfigure                           0x00000d19   Thumb Code    88  timer.o(i.TimerConfigure)
+    TimerEnable                              0x00000d79   Thumb Code    14  timer.o(i.TimerEnable)
+    TimerIntClear                            0x00000d87   Thumb Code     4  timer.o(i.TimerIntClear)
+    TimerIntEnable                           0x00000d8b   Thumb Code     8  timer.o(i.TimerIntEnable)
+    TimerLoadSet                             0x00000d93   Thumb Code    18  timer.o(i.TimerLoadSet)
+    UARTCharGet                              0x00000da5   Thumb Code    12  uart.o(i.UARTCharGet)
+    UARTCharPut                              0x00000db1   Thumb Code    12  uart.o(i.UARTCharPut)
+    UARTClockSourceSet                       0x00000dbd   Thumb Code     6  uart.o(i.UARTClockSourceSet)
+    UARTConfigSetExpClk                      0x00000dc3   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
+    UARTEnable                               0x00000e31   Thumb Code    20  uart.o(i.UARTEnable)
+    UARTFlowControlSet                       0x00000e45   Thumb Code    12  uart.o(i.UARTFlowControlSet)
+    UARTGetNum                               0x00000e51   Thumb Code    76  tivasetup.o(i.UARTGetNum)
+    UARTIntClear                             0x00000ed1   Thumb Code     4  uart.o(i.UARTIntClear)
+    UARTIntEnable                            0x00000ed5   Thumb Code     8  uart.o(i.UARTIntEnable)
+    UARTIntHandler                           0x00000edd   Thumb Code    26  tivasetup.o(i.UARTIntHandler)
+    UARTIntStatus                            0x00000efd   Thumb Code    10  uart.o(i.UARTIntStatus)
+    UARTStdioConfig                          0x00000f09   Thumb Code    68  uartstdio.o(i.UARTStdioConfig)
+    UART_int_init                            0x00000f59   Thumb Code    88  tivasetup.o(i.UART_int_init)
+    UARTprintf                               0x00000fc1   Thumb Code    26  uartstdio.o(i.UARTprintf)
+    UARTvprintf                              0x00000fdd   Thumb Code   574  uartstdio.o(i.UARTvprintf)
+    UARTwrite                                0x0000122d   Thumb Code    46  uartstdio.o(i.UARTwrite)
+    ledSwitchCases                           0x00001261   Thumb Code   140  tivasetup.o(i.ledSwitchCases)
+    main                                     0x00001315   Thumb Code    54  main.o(i.main)
+    roundCheck                               0x000013f5   Thumb Code   192  game.o(i.roundCheck)
+    roundStart                               0x00001555   Thumb Code   152  game.o(i.roundStart)
+    userLEDSwitchCases                       0x00001641   Thumb Code   124  tivasetup.o(i.userLEDSwitchCases)
+    _fp_init                                 0x00001701   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00001709   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00001709   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x00001c70   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001c90   Number         0  anon$$obj.o(Region$$Table)
     userCount                                0x20000008   Data           4  tivasetup.o(.data)
     startGame                                0x2000000c   Data           1  tivasetup.o(.data)
     lostRound                                0x2000000d   Data           1  tivasetup.o(.data)
     currentRound                             0x20000010   Data           4  tivasetup.o(.data)
     position                                 0x20000014   Data           4  tivasetup.o(.data)
     timerseconds                             0x20000018   Data           4  tivasetup.o(.data)
-    randomLED                                0x2000001c   Data           4  game.o(.data)
-    correct                                  0x20000020   Data           4  game.o(.data)
-    seconds                                  0x20000024   Data           4  game.o(.data)
-    comArray                                 0x20000028   Data          40  game.o(.bss)
-    userArray                                0x20000050   Data          40  game.o(.bss)
-    _random_number_data                      0x20000078   Data         228  rand.o(.bss)
-    __libspace_start                         0x2000015c   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x200001bc   Data           0  libspace.o(.bss)
+    charNum                                  0x2000001c   Data           1  tivasetup.o(.data)
+    nameNum                                  0x20000020   Data           4  tivasetup.o(.data)
+    comArray                                 0x20000024   Data          40  game.o(.bss)
+    userArray                                0x2000004c   Data          40  game.o(.bss)
+    _random_number_data                      0x20000074   Data         228  rand.o(.bss)
+    __libspace_start                         0x20000158   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x200001b8   Data           0  libspace.o(.bss)
 
 
 
@@ -894,161 +893,160 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00001b30, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001cb4, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001b08, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001c90, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x00000000   0x00000000   0x00000288   Code   RO            3  * RESET               startup_rvmdk.o
-    0x00000288   0x00000288   0x00000008   Code   RO         1600  * !!!main             c_w.l(__main.o)
-    0x00000290   0x00000290   0x00000034   Code   RO         1757    !!!scatter          c_w.l(__scatter.o)
-    0x000002c4   0x000002c4   0x0000001a   Code   RO         1759    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000288   0x00000288   0x00000008   Code   RO         1604  * !!!main             c_w.l(__main.o)
+    0x00000290   0x00000290   0x00000034   Code   RO         1761    !!!scatter          c_w.l(__scatter.o)
+    0x000002c4   0x000002c4   0x0000001a   Code   RO         1763    !!handler_copy      c_w.l(__scatter_copy.o)
     0x000002de   0x000002de   0x00000002   PAD
-    0x000002e0   0x000002e0   0x0000001c   Code   RO         1761    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000002fc   0x000002fc   0x00000002   Code   RO         1680    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x000002fe   0x000002fe   0x00000004   Code   RO         1603    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x00000302   0x00000302   0x00000000   Code   RO         1606    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
-    0x00000302   0x00000302   0x00000000   Code   RO         1609    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x00000302   0x00000302   0x00000000   Code   RO         1611    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x00000302   0x00000302   0x00000004   Code   RO         1612    .ARM.Collect$$libinit$$0000000D  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1613    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1616    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1618    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1620    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1622    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1624    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1626    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1628    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1630    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1632    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1634    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1636    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1640    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1642    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1644    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000000   Code   RO         1646    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
-    0x00000306   0x00000306   0x00000002   Code   RO         1647    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
-    0x00000308   0x00000308   0x00000002   Code   RO         1718    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1724    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1726    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1729    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1732    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1734    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000000   Code   RO         1737    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x0000030a   0x0000030a   0x00000002   Code   RO         1738    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
-    0x0000030c   0x0000030c   0x00000000   Code   RO         1602    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
-    0x0000030c   0x0000030c   0x00000000   Code   RO         1649    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
-    0x0000030c   0x0000030c   0x00000006   Code   RO         1661    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
-    0x00000312   0x00000312   0x00000000   Code   RO         1651    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
-    0x00000312   0x00000312   0x00000004   Code   RO         1652    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
-    0x00000316   0x00000316   0x00000000   Code   RO         1654    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
-    0x00000316   0x00000316   0x00000008   Code   RO         1655    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
-    0x0000031e   0x0000031e   0x00000002   Code   RO         1686    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x00000320   0x00000320   0x00000000   Code   RO         1698    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x00000320   0x00000320   0x00000004   Code   RO         1699    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000324   0x00000324   0x00000006   Code   RO         1700    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002e0   0x000002e0   0x0000001c   Code   RO         1765    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002fc   0x000002fc   0x00000002   Code   RO         1684    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x000002fe   0x000002fe   0x00000004   Code   RO         1607    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x00000302   0x00000302   0x00000000   Code   RO         1610    .ARM.Collect$$libinit$$00000004  c_w.l(libinit2.o)
+    0x00000302   0x00000302   0x00000000   Code   RO         1613    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x00000302   0x00000302   0x00000000   Code   RO         1615    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000302   0x00000302   0x00000004   Code   RO         1616    .ARM.Collect$$libinit$$0000000D  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1617    .ARM.Collect$$libinit$$0000000E  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1620    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1622    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1624    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1626    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1628    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1630    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1632    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1634    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1636    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1638    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1640    .ARM.Collect$$libinit$$00000025  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1644    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1646    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1648    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000000   Code   RO         1650    .ARM.Collect$$libinit$$00000032  c_w.l(libinit2.o)
+    0x00000306   0x00000306   0x00000002   Code   RO         1651    .ARM.Collect$$libinit$$00000033  c_w.l(libinit2.o)
+    0x00000308   0x00000308   0x00000002   Code   RO         1722    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1728    .ARM.Collect$$libshutdown$$00000002  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1730    .ARM.Collect$$libshutdown$$00000004  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1733    .ARM.Collect$$libshutdown$$00000007  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1736    .ARM.Collect$$libshutdown$$0000000A  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1738    .ARM.Collect$$libshutdown$$0000000C  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000000   Code   RO         1741    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x0000030a   0x0000030a   0x00000002   Code   RO         1742    .ARM.Collect$$libshutdown$$00000010  c_w.l(libshutdown2.o)
+    0x0000030c   0x0000030c   0x00000000   Code   RO         1606    .ARM.Collect$$rtentry$$00000000  c_w.l(__rtentry.o)
+    0x0000030c   0x0000030c   0x00000000   Code   RO         1653    .ARM.Collect$$rtentry$$00000002  c_w.l(__rtentry2.o)
+    0x0000030c   0x0000030c   0x00000006   Code   RO         1665    .ARM.Collect$$rtentry$$00000004  c_w.l(__rtentry4.o)
+    0x00000312   0x00000312   0x00000000   Code   RO         1655    .ARM.Collect$$rtentry$$00000009  c_w.l(__rtentry2.o)
+    0x00000312   0x00000312   0x00000004   Code   RO         1656    .ARM.Collect$$rtentry$$0000000A  c_w.l(__rtentry2.o)
+    0x00000316   0x00000316   0x00000000   Code   RO         1658    .ARM.Collect$$rtentry$$0000000C  c_w.l(__rtentry2.o)
+    0x00000316   0x00000316   0x00000008   Code   RO         1659    .ARM.Collect$$rtentry$$0000000D  c_w.l(__rtentry2.o)
+    0x0000031e   0x0000031e   0x00000002   Code   RO         1690    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x00000320   0x00000320   0x00000000   Code   RO         1702    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x00000320   0x00000320   0x00000004   Code   RO         1703    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000324   0x00000324   0x00000006   Code   RO         1704    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x0000032a   0x0000032a   0x00000002   PAD
-    0x0000032c   0x0000032c   0x00000006   Code   RO          708    .emb_text           driverlib.lib(sysctl.o)
+    0x0000032c   0x0000032c   0x00000006   Code   RO          710    .emb_text           driverlib.lib(sysctl.o)
     0x00000332   0x00000332   0x00000002   PAD
-    0x00000334   0x00000334   0x00000026   Code   RO         1581    .emb_text           driverlib.lib(cpu.o)
+    0x00000334   0x00000334   0x00000026   Code   RO         1583    .emb_text           driverlib.lib(cpu.o)
     0x0000035a   0x0000035a   0x00000002   PAD
-    0x0000035c   0x0000035c   0x00000034   Code   RO         1593    .emb_text           c_w.l(rand.o)
+    0x0000035c   0x0000035c   0x00000034   Code   RO         1595    .emb_text           c_w.l(rand.o)
     0x00000390   0x00000390   0x00000018   Code   RO            4    .text               startup_rvmdk.o
-    0x000003a8   0x000003a8   0x0000003c   Code   RO         1594    .text               c_w.l(rand.o)
-    0x000003e4   0x000003e4   0x00000006   Code   RO         1598    .text               c_w.l(heapauxi.o)
-    0x000003ea   0x000003ea   0x0000004a   Code   RO         1667    .text               c_w.l(sys_stackheap_outer.o)
-    0x00000434   0x00000434   0x00000012   Code   RO         1669    .text               c_w.l(exit.o)
-    0x00000446   0x00000446   0x00000002   PAD
-    0x00000448   0x00000448   0x00000008   Code   RO         1683    .text               c_w.l(libspace.o)
-    0x00000450   0x00000450   0x00000002   Code   RO         1694    .text               c_w.l(use_no_semi.o)
-    0x00000452   0x00000452   0x00000000   Code   RO         1696    .text               c_w.l(indicate_semi.o)
-    0x00000452   0x00000452   0x00000002   PAD
-    0x00000454   0x00000454   0x0000000c   Code   RO         1710    .text               c_w.l(sys_exit.o)
-    0x00000460   0x00000460   0x00000028   Code   RO          271    i.GPIODirModeSet    driverlib.lib(gpio.o)
-    0x00000488   0x00000488   0x00000058   Code   RO          100    i.GPIOF_Interrupt_Init  tivasetup.o
-    0x000004e0   0x000004e0   0x0000013a   Code   RO          281    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
-    0x0000061a   0x0000061a   0x00000002   PAD
-    0x0000061c   0x0000061c   0x00000048   Code   RO          282    i.GPIOPinConfigure  driverlib.lib(gpio.o)
-    0x00000664   0x00000664   0x0000001c   Code   RO          291    i.GPIOPinTypeGPIOInput  driverlib.lib(gpio.o)
-    0x00000680   0x00000680   0x0000001c   Code   RO          292    i.GPIOPinTypeGPIOOutput  driverlib.lib(gpio.o)
-    0x0000069c   0x0000069c   0x0000001c   Code   RO          307    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
-    0x000006b8   0x000006b8   0x00000006   Code   RO          313    i.GPIOPinWrite      driverlib.lib(gpio.o)
-    0x000006be   0x000006be   0x00000002   PAD
-    0x000006c0   0x000006c0   0x00000140   Code   RO          101    i.GPIOPortF_Handler  tivasetup.o
-    0x00000800   0x00000800   0x00000064   Code   RO          593    i.IntEnable         driverlib.lib(interrupt.o)
-    0x00000864   0x00000864   0x0000000e   Code   RO          596    i.IntMasterEnable   driverlib.lib(interrupt.o)
-    0x00000872   0x00000872   0x00000002   PAD
-    0x00000874   0x00000874   0x0000001c   Code   RO          601    i.IntPriorityGroupingSet  driverlib.lib(interrupt.o)
-    0x00000890   0x00000890   0x00000004   Code   RO          603    i.IntPriorityMaskSet  driverlib.lib(interrupt.o)
-    0x00000894   0x00000894   0x00000028   Code   RO          604    i.IntPrioritySet    driverlib.lib(interrupt.o)
-    0x000008bc   0x000008bc   0x0000009c   Code   RO          104    i.PortFunctionInit  tivasetup.o
-    0x00000958   0x00000958   0x00000164   Code   RO          711    i.SysCtlClockGet    driverlib.lib(sysctl.o)
-    0x00000abc   0x00000abc   0x00000028   Code   RO          742    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
-    0x00000ae4   0x00000ae4   0x0000002c   Code   RO          745    i.SysCtlPeripheralPresent  driverlib.lib(sysctl.o)
-    0x00000b10   0x00000b10   0x00000084   Code   RO          105    i.Timer0A_Handler   tivasetup.o
-    0x00000b94   0x00000b94   0x00000050   Code   RO          106    i.Timer0A_Init      tivasetup.o
-    0x00000be4   0x00000be4   0x00000060   Code   RO         1054    i.TimerConfigure    driverlib.lib(timer.o)
-    0x00000c44   0x00000c44   0x0000000e   Code   RO         1063    i.TimerEnable       driverlib.lib(timer.o)
-    0x00000c52   0x00000c52   0x00000004   Code   RO         1064    i.TimerIntClear     driverlib.lib(timer.o)
-    0x00000c56   0x00000c56   0x00000008   Code   RO         1066    i.TimerIntEnable    driverlib.lib(timer.o)
-    0x00000c5e   0x00000c5e   0x00000012   Code   RO         1072    i.TimerLoadSet      driverlib.lib(timer.o)
-    0x00000c70   0x00000c70   0x0000000c   Code   RO         1298    i.UARTCharGet       driverlib.lib(uart.o)
-    0x00000c7c   0x00000c7c   0x0000000c   Code   RO         1300    i.UARTCharPut       driverlib.lib(uart.o)
-    0x00000c88   0x00000c88   0x0000006e   Code   RO         1306    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
-    0x00000cf6   0x00000cf6   0x00000014   Code   RO         1311    i.UARTEnable        driverlib.lib(uart.o)
-    0x00000d0a   0x00000d0a   0x0000000c   Code   RO         1318    i.UARTFlowControlSet  driverlib.lib(uart.o)
-    0x00000d16   0x00000d16   0x00000004   Code   RO         1319    i.UARTIntClear      driverlib.lib(uart.o)
-    0x00000d1a   0x00000d1a   0x00000008   Code   RO         1321    i.UARTIntEnable     driverlib.lib(uart.o)
-    0x00000d22   0x00000d22   0x00000002   PAD
-    0x00000d24   0x00000d24   0x00000020   Code   RO          107    i.UARTIntHandler    tivasetup.o
-    0x00000d44   0x00000d44   0x0000000a   Code   RO         1323    i.UARTIntStatus     driverlib.lib(uart.o)
-    0x00000d4e   0x00000d4e   0x00000002   PAD
-    0x00000d50   0x00000d50   0x00000050   Code   RO           11    i.UARTStdioConfig   uartstdio.o
-    0x00000da0   0x00000da0   0x00000070   Code   RO          108    i.UARTSwitchCases   tivasetup.o
-    0x00000e10   0x00000e10   0x0000007c   Code   RO          109    i.UART_int_init     tivasetup.o
-    0x00000e8c   0x00000e8c   0x0000001a   Code   RO           14    i.UARTprintf        uartstdio.o
-    0x00000ea6   0x00000ea6   0x00000002   PAD
-    0x00000ea8   0x00000ea8   0x00000250   Code   RO           15    i.UARTvprintf       uartstdio.o
-    0x000010f8   0x000010f8   0x00000034   Code   RO           16    i.UARTwrite         uartstdio.o
-    0x0000112c   0x0000112c   0x000000b0   Code   RO          110    i.ledSwitchCases    tivasetup.o
-    0x000011dc   0x000011dc   0x000000c4   Code   RO          220    i.main              main.o
-    0x000012a0   0x000012a0   0x00000164   Code   RO          240    i.roundCheck        game.o
-    0x00001404   0x00001404   0x000000b4   Code   RO          241    i.roundStart        game.o
-    0x000014b8   0x000014b8   0x000000c0   Code   RO          111    i.userLEDSwitchCases  tivasetup.o
-    0x00001578   0x00001578   0x0000000a   Code   RO         1665    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00001582   0x00001582   0x00000002   PAD
-    0x00001584   0x00001584   0x0000001c   Data   RO           17    .constdata          uartstdio.o
-    0x000015a0   0x000015a0   0x00000210   Data   RO          314    .constdata          driverlib.lib(gpio.o)
-    0x000017b0   0x000017b0   0x0000010c   Data   RO          609    .constdata          driverlib.lib(interrupt.o)
-    0x000018bc   0x000018bc   0x000001c4   Data   RO          763    .constdata          driverlib.lib(sysctl.o)
-    0x00001a80   0x00001a80   0x00000011   Data   RO           18    .conststring        uartstdio.o
-    0x00001a91   0x00001a91   0x00000003   PAD
-    0x00001a94   0x00001a94   0x00000053   Data   RO          221    .conststring        main.o
-    0x00001ae7   0x00001ae7   0x00000001   PAD
-    0x00001ae8   0x00001ae8   0x00000020   Data   RO         1755    Region$$Table       anon$$obj.o
+    0x000003a8   0x000003a8   0x0000003c   Code   RO         1596    .text               c_w.l(rand.o)
+    0x000003e4   0x000003e4   0x00000080   Code   RO         1600    .text               c_w.l(strcmpv7m.o)
+    0x00000464   0x00000464   0x00000006   Code   RO         1602    .text               c_w.l(heapauxi.o)
+    0x0000046a   0x0000046a   0x0000004a   Code   RO         1671    .text               c_w.l(sys_stackheap_outer.o)
+    0x000004b4   0x000004b4   0x00000012   Code   RO         1673    .text               c_w.l(exit.o)
+    0x000004c6   0x000004c6   0x00000002   PAD
+    0x000004c8   0x000004c8   0x00000008   Code   RO         1687    .text               c_w.l(libspace.o)
+    0x000004d0   0x000004d0   0x00000002   Code   RO         1698    .text               c_w.l(use_no_semi.o)
+    0x000004d2   0x000004d2   0x00000000   Code   RO         1700    .text               c_w.l(indicate_semi.o)
+    0x000004d2   0x000004d2   0x00000002   PAD
+    0x000004d4   0x000004d4   0x0000000c   Code   RO         1714    .text               c_w.l(sys_exit.o)
+    0x000004e0   0x000004e0   0x00000028   Code   RO          273    i.GPIODirModeSet    driverlib.lib(gpio.o)
+    0x00000508   0x00000508   0x00000058   Code   RO          100    i.GPIOF_Interrupt_Init  tivasetup.o
+    0x00000560   0x00000560   0x0000013a   Code   RO          283    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
+    0x0000069a   0x0000069a   0x00000002   PAD
+    0x0000069c   0x0000069c   0x00000048   Code   RO          284    i.GPIOPinConfigure  driverlib.lib(gpio.o)
+    0x000006e4   0x000006e4   0x0000001c   Code   RO          294    i.GPIOPinTypeGPIOOutput  driverlib.lib(gpio.o)
+    0x00000700   0x00000700   0x0000001c   Code   RO          309    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
+    0x0000071c   0x0000071c   0x00000006   Code   RO          315    i.GPIOPinWrite      driverlib.lib(gpio.o)
+    0x00000722   0x00000722   0x00000002   PAD
+    0x00000724   0x00000724   0x00000140   Code   RO          101    i.GPIOPortF_Handler  tivasetup.o
+    0x00000864   0x00000864   0x00000064   Code   RO          595    i.IntEnable         driverlib.lib(interrupt.o)
+    0x000008c8   0x000008c8   0x0000000e   Code   RO          598    i.IntMasterEnable   driverlib.lib(interrupt.o)
+    0x000008d6   0x000008d6   0x00000002   PAD
+    0x000008d8   0x000008d8   0x0000001c   Code   RO          603    i.IntPriorityGroupingSet  driverlib.lib(interrupt.o)
+    0x000008f4   0x000008f4   0x00000004   Code   RO          605    i.IntPriorityMaskSet  driverlib.lib(interrupt.o)
+    0x000008f8   0x000008f8   0x00000028   Code   RO          606    i.IntPrioritySet    driverlib.lib(interrupt.o)
+    0x00000920   0x00000920   0x00000080   Code   RO          104    i.PortFunctionInit  tivasetup.o
+    0x000009a0   0x000009a0   0x00000164   Code   RO          713    i.SysCtlClockGet    driverlib.lib(sysctl.o)
+    0x00000b04   0x00000b04   0x00000120   Code   RO          715    i.SysCtlClockSet    driverlib.lib(sysctl.o)
+    0x00000c24   0x00000c24   0x00000028   Code   RO          744    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
+    0x00000c4c   0x00000c4c   0x0000002c   Code   RO          747    i.SysCtlPeripheralPresent  driverlib.lib(sysctl.o)
+    0x00000c78   0x00000c78   0x00000050   Code   RO          105    i.Timer0A_Handler   tivasetup.o
+    0x00000cc8   0x00000cc8   0x00000050   Code   RO          106    i.Timer0A_Init      tivasetup.o
+    0x00000d18   0x00000d18   0x00000060   Code   RO         1056    i.TimerConfigure    driverlib.lib(timer.o)
+    0x00000d78   0x00000d78   0x0000000e   Code   RO         1065    i.TimerEnable       driverlib.lib(timer.o)
+    0x00000d86   0x00000d86   0x00000004   Code   RO         1066    i.TimerIntClear     driverlib.lib(timer.o)
+    0x00000d8a   0x00000d8a   0x00000008   Code   RO         1068    i.TimerIntEnable    driverlib.lib(timer.o)
+    0x00000d92   0x00000d92   0x00000012   Code   RO         1074    i.TimerLoadSet      driverlib.lib(timer.o)
+    0x00000da4   0x00000da4   0x0000000c   Code   RO         1300    i.UARTCharGet       driverlib.lib(uart.o)
+    0x00000db0   0x00000db0   0x0000000c   Code   RO         1302    i.UARTCharPut       driverlib.lib(uart.o)
+    0x00000dbc   0x00000dbc   0x00000006   Code   RO         1306    i.UARTClockSourceSet  driverlib.lib(uart.o)
+    0x00000dc2   0x00000dc2   0x0000006e   Code   RO         1308    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
+    0x00000e30   0x00000e30   0x00000014   Code   RO         1313    i.UARTEnable        driverlib.lib(uart.o)
+    0x00000e44   0x00000e44   0x0000000c   Code   RO         1320    i.UARTFlowControlSet  driverlib.lib(uart.o)
+    0x00000e50   0x00000e50   0x00000080   Code   RO          107    i.UARTGetNum        tivasetup.o
+    0x00000ed0   0x00000ed0   0x00000004   Code   RO         1321    i.UARTIntClear      driverlib.lib(uart.o)
+    0x00000ed4   0x00000ed4   0x00000008   Code   RO         1323    i.UARTIntEnable     driverlib.lib(uart.o)
+    0x00000edc   0x00000edc   0x00000020   Code   RO          108    i.UARTIntHandler    tivasetup.o
+    0x00000efc   0x00000efc   0x0000000a   Code   RO         1325    i.UARTIntStatus     driverlib.lib(uart.o)
+    0x00000f06   0x00000f06   0x00000002   PAD
+    0x00000f08   0x00000f08   0x00000050   Code   RO           11    i.UARTStdioConfig   uartstdio.o
+    0x00000f58   0x00000f58   0x00000068   Code   RO          109    i.UART_int_init     tivasetup.o
+    0x00000fc0   0x00000fc0   0x0000001a   Code   RO           14    i.UARTprintf        uartstdio.o
+    0x00000fda   0x00000fda   0x00000002   PAD
+    0x00000fdc   0x00000fdc   0x00000250   Code   RO           15    i.UARTvprintf       uartstdio.o
+    0x0000122c   0x0000122c   0x00000034   Code   RO           16    i.UARTwrite         uartstdio.o
+    0x00001260   0x00001260   0x000000b4   Code   RO          110    i.ledSwitchCases    tivasetup.o
+    0x00001314   0x00001314   0x000000e0   Code   RO          226    i.main              main.o
+    0x000013f4   0x000013f4   0x00000160   Code   RO          243    i.roundCheck        game.o
+    0x00001554   0x00001554   0x000000ec   Code   RO          244    i.roundStart        game.o
+    0x00001640   0x00001640   0x000000c0   Code   RO          111    i.userLEDSwitchCases  tivasetup.o
+    0x00001700   0x00001700   0x0000000a   Code   RO         1669    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x0000170a   0x0000170a   0x00000002   PAD
+    0x0000170c   0x0000170c   0x0000001c   Data   RO           17    .constdata          uartstdio.o
+    0x00001728   0x00001728   0x00000210   Data   RO          316    .constdata          driverlib.lib(gpio.o)
+    0x00001938   0x00001938   0x0000010c   Data   RO          611    .constdata          driverlib.lib(interrupt.o)
+    0x00001a44   0x00001a44   0x000001c4   Data   RO          765    .constdata          driverlib.lib(sysctl.o)
+    0x00001c08   0x00001c08   0x00000011   Data   RO           18    .conststring        uartstdio.o
+    0x00001c19   0x00001c19   0x00000003   PAD
+    0x00001c1c   0x00001c1c   0x00000053   Data   RO          227    .conststring        main.o
+    0x00001c6f   0x00001c6f   0x00000001   PAD
+    0x00001c70   0x00001c70   0x00000020   Data   RO         1759    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00001b08, Size: 0x00000028, Max: 0xffffffff, ABSOLUTE)
-
-    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
-
-    0x20000000   0x00001b08   0x00000005   Data   RW           19    .data               uartstdio.o
-    0x20000005   0x00001b0d   0x00000003   PAD
-    0x20000008   0x00001b10   0x00000014   Data   RW          112    .data               tivasetup.o
-    0x2000001c   0x00001b24   0x0000000c   Data   RW          243    .data               game.o
-
-
-    Execution Region ER_ZI (Exec base: 0x20000028, Load base: 0x00001b30, Size: 0x00000298, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00001c90, Size: 0x00000024, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000028        -       0x00000050   Zero   RW          242    .bss                game.o
-    0x20000078        -       0x000000e4   Zero   RW         1595    .bss                c_w.l(rand.o)
-    0x2000015c        -       0x00000060   Zero   RW         1684    .bss                c_w.l(libspace.o)
-    0x200001bc   0x00001b30   0x00000004   PAD
-    0x200001c0        -       0x00000000   Zero   RW            2    HEAP                startup_rvmdk.o
-    0x200001c0        -       0x00000100   Zero   RW            1    STACK               startup_rvmdk.o
+    0x20000000   0x00001c90   0x00000005   Data   RW           19    .data               uartstdio.o
+    0x20000005   0x00001c95   0x00000003   PAD
+    0x20000008   0x00001c98   0x0000001c   Data   RW          112    .data               tivasetup.o
+
+
+    Execution Region ER_ZI (Exec base: 0x20000024, Load base: 0x00001cb4, Size: 0x00000294, Max: 0xffffffff, ABSOLUTE)
+
+    Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000024        -       0x00000050   Zero   RW          245    .bss                game.o
+    0x20000074        -       0x000000e4   Zero   RW         1597    .bss                c_w.l(rand.o)
+    0x20000158        -       0x00000060   Zero   RW         1688    .bss                c_w.l(libspace.o)
+    0x200001b8        -       0x00000000   Zero   RW            2    HEAP                startup_rvmdk.o
+    0x200001b8        -       0x00000100   Zero   RW            1    STACK               startup_rvmdk.o
 
 
 ==============================================================================
@@ -1058,14 +1056,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       536        206          0         12         80       1997   game.o
-       196        150         83          0          0        499   main.o
+       588        244          0          0         80       1935   game.o
+       224        170         83          0          0        555   main.o
        672        636          0          0        256        564   startup_rvmdk.o
-      1412        358          0         20          0       6491   tivasetup.o
+      1332        340          0         28          0       6494   tivasetup.o
        750         36         45          5          0      10144   uartstdio.o
 
     ----------------------------------------------------------------------
-      3568       1386        164         40        336      19695   Object Totals
+      3568       1426        164         36        336      19692   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          4          3          0          0   (incl. Padding)
 
@@ -1091,31 +1089,32 @@ Image component sizes
        112         18          0          0        228        160   rand.o
          2          0          0          0          0          0   rtexit.o
         10          0          0          0          0          0   rtexit2.o
+       128          0          0          0          0         68   strcmpv7m.o
         12          4          0          0          0         68   sys_exit.o
         74          0          0          0          0         80   sys_stackheap_outer.o
          2          0          0          0          0         68   use_no_semi.o
         38          0          0          0          0        504   cpu.o
-       516          8        528          0          0       7347   gpio.o
+       488          8        528          0          0       6860   gpio.o
        186         20        268          0          0       3121   interrupt.o
-       446         50        452          0          0       3620   sysctl.o
+       734         68        452          0          0       4433   sysctl.o
        140          8          0          0          0       2267   timer.o
-       188          0          0          0          0       4403   uart.o
+       194          0          0          0          0       4836   uart.o
         10          0          0          0          0        116   fpinit.o
 
     ----------------------------------------------------------------------
-      1940        120       1248          0        328      22122   Library Totals
-        24          0          0          0          4          0   (incl. Padding)
+      2332        138       1248          0        324      22949   Library Totals
+        22          0          0          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-       392         34          0          0        324        744   c_w.l
-      1514         86       1248          0          0      21262   driverlib.lib
+       520         34          0          0        324        812   c_w.l
+      1780        104       1248          0          0      22021   driverlib.lib
         10          0          0          0          0        116   fz_wm.l
 
     ----------------------------------------------------------------------
-      1940        120       1248          0        328      22122   Library Totals
+      2332        138       1248          0        324      22949   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1124,15 +1123,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5508       1506       1412         40        664      37457   Grand Totals
-      5508       1506       1412         40        664      37457   ELF Image Totals
-      5508       1506       1412         40          0          0   ROM Totals
+      5900       1564       1412         36        660      38129   Grand Totals
+      5900       1564       1412         36        660      38129   ELF Image Totals
+      5900       1564       1412         36          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 6920 (   6.76kB)
-    Total RW  Size (RW Data + ZI Data)               704 (   0.69kB)
-    Total ROM Size (Code + RO Data + RW Data)       6960 (   6.80kB)
+    Total RO  Size (Code + RO Data)                 7312 (   7.14kB)
+    Total RW  Size (RW Data + ZI Data)               696 (   0.68kB)
+    Total ROM Size (Code + RO Data + RW Data)       7348 (   7.18kB)
 
 ==============================================================================
 
