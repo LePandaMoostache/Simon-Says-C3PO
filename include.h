@@ -1,10 +1,11 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include <time.h> // Used <ctime> as well, does not work
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
+#include <ctype.h>
+#include <ctime>
 
 #include "inc/hw_types.h"
 #include "inc/hw_memmap.h"

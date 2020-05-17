@@ -4,10 +4,12 @@
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdbool.h
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
-.\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
 .\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
+.\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\ctype.h
+.\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\ctime
+.\objects\game.o: F:\Keil_v5\ARM\ARMCC\Bin\..\include\time.h
 .\objects\game.o: ..\..\..\..\inc/hw_types.h
 .\objects\game.o: ..\..\..\..\inc/hw_memmap.h
 .\objects\game.o: ..\..\..\..\inc/hw_gpio.h
