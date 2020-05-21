@@ -19,7 +19,8 @@ void roundStart(int roundNum) {
         // First round: Gives first LED
         // Subsequent rounds: Add new element to comArray by 1
         UARTprintf("\r\nIndex: %i", currentRound);
-        randomLED = (nameNum+rand()) % 3 + 1; // >:C
+				//UARTprintf("\r\nrand():%i", rand());
+        randomLED = (nameNum+rand()) % 3 + 1; 
         comArray[currentRound] = randomLED;
         ledSwitchCases(comArray[currentRound]);
 
@@ -56,8 +57,9 @@ void roundCheck(void) {
 
     // If correct counter equals to the current round, player won that round, can continue.
     if (correct == currentRound) {
-				UARTprintf("\r\nCorrect! Start next round...\n");
-				SysCtlDelay(2000000);
+				// Commenting these out because we forgot to include some delay during presentation demo
+				// UARTprintf("\r\nCorrect! Start next round...\n");
+				// SysCtlDelay(2000000);
         userCount = 0; // Reset position of user LED currently selected
         position = 1; // Clears userArray's contents
         timerseconds = 30 - currentRound; // Decrease timer by 1 for next round

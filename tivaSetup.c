@@ -184,9 +184,9 @@ void UARTGetNum(void) {
             startGame = true;
             roundStart(currentRound);
         } else {
-            UARTprintf("%c", charNum);
-            nameNum = nameNum + charNum;
-        }
+           UARTprintf("%c", charNum);
+           nameNum = nameNum + charNum;
+				}
         
 }
 
