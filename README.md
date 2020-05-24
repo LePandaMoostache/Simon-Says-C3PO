@@ -14,3 +14,8 @@
      - Instructions
      - Prompts user to type their name
 8. While loop to allow interrupt handlers function until user gets a game over.
+
+**game.c**
+1. roundStart()
+     1. If bool startGame is true
+          - Prints "ROUND %i", depends on currentRound, default is 1.
