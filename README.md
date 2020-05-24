@@ -1,8 +1,8 @@
 # Simon Says by Group C3PO for ENGR 478-04 Spring 2020
 This project uses the EK-TM4C123GXL, aka the TM4C123G LaunchPad Evaluation Kit. It features using UART, TIMER0A, and GPIOF (Both Switches and LED) interrupts, and to verify the general purpose timer we used the HiLetGo USB Logic Analyzer bought from Amazon. For software we used Keil μVision v5.29 with Stellaris ICDI Debug Adapter Support and Tera Term v4.105. 
 
-## Version 8.0
-May 21, 2020
+## Version 9.0
+May 24, 2020
 *Final Commit for Project Submission*
 
 INSTRUCTIONS
