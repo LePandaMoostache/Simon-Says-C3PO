@@ -18,7 +18,34 @@
 **tivaSetup.c**
 1. IntGlobalEnable()
 1. IntGlobalDisable()
-1. 
+1. PortFunctionInit()
+     1. Initialize GPIOF using PinMux Utility 
+1. GPIOF_Interrupt_Init()
+     1. Enables GPIOF in NVIC address
+     1. Arm interrupt on PF0 and PF4
+     1. PF0 and PF4 set to edge sensitive
+     1. PF0 and PF4 are falling edge trigger ONLY
+1. GPIOPortF_Handler()
+     1. Use switch debounces
+     1. Is startGame true AND lostRound is false?
+          - YES 
+               - Action on SW1?
+                    - YES
+                         - Updates userCount by 1
+                         - userCount is within 3, so 00 -> 01 -> 10 -> 11 -> 00 -> etc
+                         - Prints "Color currectly selected: "
+                         - Goes to userLEDSwitchCases with userCount number
+               - Action on SW2?
+                    - YES
+                         - Prints "Confirm Press"
+                         - Adds userCount to userArray's current position
+                         - Displays user's confirmed LED number
+                         - Updates position by 1
+                         - Is position equal to currentRound + 1? 
+                              - YES
+                                   - Go to roundCheck()
+                              - NO
+                                   - Return to interrupt
 **game.c**
 1. roundStart()
      1. If bool startGame is true
