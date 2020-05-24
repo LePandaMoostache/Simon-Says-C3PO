@@ -8,7 +8,7 @@ Section Cross References
     startup_rvmdk.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_rvmdk.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_rvmdk.o(RESET) refers to startup_rvmdk.o(STACK) for StackMem
-    startup_rvmdk.o(RESET) refers to tivasetup.o(i.UARTIntHandler) for UARTIntHandler
+    startup_rvmdk.o(RESET) refers to tivasetup.o(i.UART0_Handler) for UART0_Handler
     startup_rvmdk.o(RESET) refers to tivasetup.o(i.Timer0A_Handler) for Timer0A_Handler
     startup_rvmdk.o(RESET) refers to tivasetup.o(i.GPIOPortF_Handler) for GPIOPortF_Handler
     startup_rvmdk.o(RESET) refers to __main.o(!!!main) for __main
@@ -54,23 +54,23 @@ Section Cross References
     tivasetup.o(i.Timer0A_Init) refers to interrupt.o(i.IntPriorityMaskSet) for IntPriorityMaskSet
     tivasetup.o(i.Timer0A_Init) refers to timer.o(i.TimerIntEnable) for TimerIntEnable
     tivasetup.o(i.Timer0A_Init) refers to timer.o(i.TimerEnable) for TimerEnable
+    tivasetup.o(i.UART0_Handler) refers to uart.o(i.UARTIntClear) for UARTIntClear
+    tivasetup.o(i.UART0_Handler) refers to uart.o(i.UARTIntStatus) for UARTIntStatus
+    tivasetup.o(i.UART0_Handler) refers to tivasetup.o(i.UARTGetNum) for UARTGetNum
+    tivasetup.o(i.UART0_init) refers to sysctl.o(i.SysCtlPeripheralEnable) for SysCtlPeripheralEnable
+    tivasetup.o(i.UART0_init) refers to gpio.o(i.GPIOPinConfigure) for GPIOPinConfigure
+    tivasetup.o(i.UART0_init) refers to gpio.o(i.GPIOPinTypeUART) for GPIOPinTypeUART
+    tivasetup.o(i.UART0_init) refers to uart.o(i.UARTClockSourceSet) for UARTClockSourceSet
+    tivasetup.o(i.UART0_init) refers to uartstdio.o(i.UARTStdioConfig) for UARTStdioConfig
+    tivasetup.o(i.UART0_init) refers to uart.o(i.UARTFlowControlSet) for UARTFlowControlSet
+    tivasetup.o(i.UART0_init) refers to interrupt.o(i.IntMasterEnable) for IntMasterEnable
+    tivasetup.o(i.UART0_init) refers to interrupt.o(i.IntEnable) for IntEnable
+    tivasetup.o(i.UART0_init) refers to uart.o(i.UARTIntEnable) for UARTIntEnable
     tivasetup.o(i.UARTGetNum) refers to uart.o(i.UARTCharGet) for UARTCharGet
     tivasetup.o(i.UARTGetNum) refers to strcmpv7m.o(.text) for strcmp
     tivasetup.o(i.UARTGetNum) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     tivasetup.o(i.UARTGetNum) refers to game.o(i.roundStart) for roundStart
     tivasetup.o(i.UARTGetNum) refers to tivasetup.o(.data) for charNum
-    tivasetup.o(i.UARTIntHandler) refers to uart.o(i.UARTIntClear) for UARTIntClear
-    tivasetup.o(i.UARTIntHandler) refers to uart.o(i.UARTIntStatus) for UARTIntStatus
-    tivasetup.o(i.UARTIntHandler) refers to tivasetup.o(i.UARTGetNum) for UARTGetNum
-    tivasetup.o(i.UART_int_init) refers to sysctl.o(i.SysCtlPeripheralEnable) for SysCtlPeripheralEnable
-    tivasetup.o(i.UART_int_init) refers to gpio.o(i.GPIOPinConfigure) for GPIOPinConfigure
-    tivasetup.o(i.UART_int_init) refers to gpio.o(i.GPIOPinTypeUART) for GPIOPinTypeUART
-    tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTClockSourceSet) for UARTClockSourceSet
-    tivasetup.o(i.UART_int_init) refers to uartstdio.o(i.UARTStdioConfig) for UARTStdioConfig
-    tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTFlowControlSet) for UARTFlowControlSet
-    tivasetup.o(i.UART_int_init) refers to interrupt.o(i.IntMasterEnable) for IntMasterEnable
-    tivasetup.o(i.UART_int_init) refers to interrupt.o(i.IntEnable) for IntEnable
-    tivasetup.o(i.UART_int_init) refers to uart.o(i.UARTIntEnable) for UARTIntEnable
     tivasetup.o(i.ledSwitchCases) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
     tivasetup.o(i.ledSwitchCases) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     tivasetup.o(i.ledSwitchCases) refers to sysctl.o(.emb_text) for SysCtlDelay
@@ -79,13 +79,12 @@ Section Cross References
     tivasetup.o(i.userLEDSwitchCases) refers to sysctl.o(.emb_text) for SysCtlDelay
     main.o(i.main) refers to sysctl.o(i.SysCtlClockSet) for SysCtlClockSet
     main.o(i.main) refers to tivasetup.o(i.PortFunctionInit) for PortFunctionInit
-    main.o(i.main) refers to tivasetup.o(i.UART_int_init) for UART_int_init
+    main.o(i.main) refers to tivasetup.o(i.UART0_init) for UART0_init
     main.o(i.main) refers to tivasetup.o(i.GPIOF_Interrupt_Init) for GPIOF_Interrupt_Init
     main.o(i.main) refers to tivasetup.o(i.Timer0A_Init) for Timer0A_Init
     main.o(i.main) refers to uartstdio.o(i.UARTprintf) for UARTprintf
     main.o(i.main) refers to main.o(.conststring) for .conststring
     game.o(i.roundCheck) refers to uartstdio.o(i.UARTprintf) for UARTprintf
-    game.o(i.roundCheck) refers to sysctl.o(.emb_text) for SysCtlDelay
     game.o(i.roundCheck) refers to game.o(i.roundStart) for roundStart
     game.o(i.roundCheck) refers to game.o(.bss) for comArray
     game.o(i.roundCheck) refers to tivasetup.o(.data) for lostRound
@@ -655,51 +654,51 @@ Image Symbol Table
     i.TimerIntClear                          0x00000d86   Section        0  timer.o(i.TimerIntClear)
     i.TimerIntEnable                         0x00000d8a   Section        0  timer.o(i.TimerIntEnable)
     i.TimerLoadSet                           0x00000d92   Section        0  timer.o(i.TimerLoadSet)
-    i.UARTCharGet                            0x00000da4   Section        0  uart.o(i.UARTCharGet)
-    i.UARTCharPut                            0x00000db0   Section        0  uart.o(i.UARTCharPut)
-    i.UARTClockSourceSet                     0x00000dbc   Section        0  uart.o(i.UARTClockSourceSet)
-    i.UARTConfigSetExpClk                    0x00000dc2   Section        0  uart.o(i.UARTConfigSetExpClk)
-    i.UARTEnable                             0x00000e30   Section        0  uart.o(i.UARTEnable)
-    i.UARTFlowControlSet                     0x00000e44   Section        0  uart.o(i.UARTFlowControlSet)
-    i.UARTGetNum                             0x00000e50   Section        0  tivasetup.o(i.UARTGetNum)
-    i.UARTIntClear                           0x00000ed0   Section        0  uart.o(i.UARTIntClear)
-    i.UARTIntEnable                          0x00000ed4   Section        0  uart.o(i.UARTIntEnable)
-    i.UARTIntHandler                         0x00000edc   Section        0  tivasetup.o(i.UARTIntHandler)
-    i.UARTIntStatus                          0x00000efc   Section        0  uart.o(i.UARTIntStatus)
-    i.UARTStdioConfig                        0x00000f08   Section        0  uartstdio.o(i.UARTStdioConfig)
-    i.UART_int_init                          0x00000f58   Section        0  tivasetup.o(i.UART_int_init)
+    i.UART0_Handler                          0x00000da4   Section        0  tivasetup.o(i.UART0_Handler)
+    i.UART0_init                             0x00000dc4   Section        0  tivasetup.o(i.UART0_init)
+    i.UARTCharGet                            0x00000e2c   Section        0  uart.o(i.UARTCharGet)
+    i.UARTCharPut                            0x00000e38   Section        0  uart.o(i.UARTCharPut)
+    i.UARTClockSourceSet                     0x00000e44   Section        0  uart.o(i.UARTClockSourceSet)
+    i.UARTConfigSetExpClk                    0x00000e4a   Section        0  uart.o(i.UARTConfigSetExpClk)
+    i.UARTEnable                             0x00000eb8   Section        0  uart.o(i.UARTEnable)
+    i.UARTFlowControlSet                     0x00000ecc   Section        0  uart.o(i.UARTFlowControlSet)
+    i.UARTGetNum                             0x00000ed8   Section        0  tivasetup.o(i.UARTGetNum)
+    i.UARTIntClear                           0x00000f58   Section        0  uart.o(i.UARTIntClear)
+    i.UARTIntEnable                          0x00000f5c   Section        0  uart.o(i.UARTIntEnable)
+    i.UARTIntStatus                          0x00000f64   Section        0  uart.o(i.UARTIntStatus)
+    i.UARTStdioConfig                        0x00000f70   Section        0  uartstdio.o(i.UARTStdioConfig)
     i.UARTprintf                             0x00000fc0   Section        0  uartstdio.o(i.UARTprintf)
     i.UARTvprintf                            0x00000fdc   Section        0  uartstdio.o(i.UARTvprintf)
     i.UARTwrite                              0x0000122c   Section        0  uartstdio.o(i.UARTwrite)
     i.ledSwitchCases                         0x00001260   Section        0  tivasetup.o(i.ledSwitchCases)
     i.main                                   0x00001314   Section        0  main.o(i.main)
     i.roundCheck                             0x000013f4   Section        0  game.o(i.roundCheck)
-    i.roundStart                             0x00001554   Section        0  game.o(i.roundStart)
-    i.userLEDSwitchCases                     0x00001640   Section        0  tivasetup.o(i.userLEDSwitchCases)
-    x$fpl$fpinit                             0x00001700   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00001700   Number         0  fpinit.o(x$fpl$fpinit)
-    .constdata                               0x0000170c   Section       28  uartstdio.o(.constdata)
-    g_pcHex                                  0x0000170c   Data           4  uartstdio.o(.constdata)
-    g_ui32UARTBase                           0x00001710   Data          12  uartstdio.o(.constdata)
-    g_ui32UARTPeriph                         0x0000171c   Data          12  uartstdio.o(.constdata)
-    .constdata                               0x00001728   Section      528  gpio.o(.constdata)
-    g_ppui32GPIOIntMapBlizzard               0x00001728   Data         192  gpio.o(.constdata)
-    g_ppui32GPIOIntMapSnowflake              0x000017e8   Data         192  gpio.o(.constdata)
-    g_pui32GPIOBaseAddrs                     0x000018a8   Data         144  gpio.o(.constdata)
-    .constdata                               0x00001938   Section      268  interrupt.o(.constdata)
-    g_pui32Priority                          0x00001938   Data          32  interrupt.o(.constdata)
-    g_pui32Regs                              0x00001958   Data         156  interrupt.o(.constdata)
-    g_pui32EnRegs                            0x000019f4   Data          20  interrupt.o(.constdata)
-    g_pui32Dii16Regs                         0x00001a08   Data          20  interrupt.o(.constdata)
-    g_pui32PendRegs                          0x00001a1c   Data          20  interrupt.o(.constdata)
-    g_pui32UnpendRegs                        0x00001a30   Data          20  interrupt.o(.constdata)
-    .constdata                               0x00001a44   Section      452  sysctl.o(.constdata)
-    g_pui32VCOFrequencies                    0x00001a44   Data           8  sysctl.o(.constdata)
-    g_pui32Xtals                             0x00001a4c   Data         108  sysctl.o(.constdata)
-    g_pppui32XTALtoVCO                       0x00001ab8   Data         288  sysctl.o(.constdata)
-    g_sXTALtoMEMTIM                          0x00001bd8   Data          48  sysctl.o(.constdata)
-    .conststring                             0x00001c08   Section       17  uartstdio.o(.conststring)
-    .conststring                             0x00001c1c   Section       83  main.o(.conststring)
+    i.roundStart                             0x00001524   Section        0  game.o(i.roundStart)
+    i.userLEDSwitchCases                     0x00001610   Section        0  tivasetup.o(i.userLEDSwitchCases)
+    x$fpl$fpinit                             0x000016d0   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x000016d0   Number         0  fpinit.o(x$fpl$fpinit)
+    .constdata                               0x000016dc   Section       28  uartstdio.o(.constdata)
+    g_pcHex                                  0x000016dc   Data           4  uartstdio.o(.constdata)
+    g_ui32UARTBase                           0x000016e0   Data          12  uartstdio.o(.constdata)
+    g_ui32UARTPeriph                         0x000016ec   Data          12  uartstdio.o(.constdata)
+    .constdata                               0x000016f8   Section      528  gpio.o(.constdata)
+    g_ppui32GPIOIntMapBlizzard               0x000016f8   Data         192  gpio.o(.constdata)
+    g_ppui32GPIOIntMapSnowflake              0x000017b8   Data         192  gpio.o(.constdata)
+    g_pui32GPIOBaseAddrs                     0x00001878   Data         144  gpio.o(.constdata)
+    .constdata                               0x00001908   Section      268  interrupt.o(.constdata)
+    g_pui32Priority                          0x00001908   Data          32  interrupt.o(.constdata)
+    g_pui32Regs                              0x00001928   Data         156  interrupt.o(.constdata)
+    g_pui32EnRegs                            0x000019c4   Data          20  interrupt.o(.constdata)
+    g_pui32Dii16Regs                         0x000019d8   Data          20  interrupt.o(.constdata)
+    g_pui32PendRegs                          0x000019ec   Data          20  interrupt.o(.constdata)
+    g_pui32UnpendRegs                        0x00001a00   Data          20  interrupt.o(.constdata)
+    .constdata                               0x00001a14   Section      452  sysctl.o(.constdata)
+    g_pui32VCOFrequencies                    0x00001a14   Data           8  sysctl.o(.constdata)
+    g_pui32Xtals                             0x00001a1c   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x00001a88   Data         288  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x00001ba8   Data          48  sysctl.o(.constdata)
+    .conststring                             0x00001bd8   Section       17  uartstdio.o(.conststring)
+    .conststring                             0x00001bec   Section       83  main.o(.conststring)
     .data                                    0x20000000   Section        5  uartstdio.o(.data)
     g_ui32Base                               0x20000000   Data           4  uartstdio.o(.data)
     bLastWasCR                               0x20000004   Data           1  uartstdio.o(.data)
@@ -845,38 +844,38 @@ Image Symbol Table
     TimerIntClear                            0x00000d87   Thumb Code     4  timer.o(i.TimerIntClear)
     TimerIntEnable                           0x00000d8b   Thumb Code     8  timer.o(i.TimerIntEnable)
     TimerLoadSet                             0x00000d93   Thumb Code    18  timer.o(i.TimerLoadSet)
-    UARTCharGet                              0x00000da5   Thumb Code    12  uart.o(i.UARTCharGet)
-    UARTCharPut                              0x00000db1   Thumb Code    12  uart.o(i.UARTCharPut)
-    UARTClockSourceSet                       0x00000dbd   Thumb Code     6  uart.o(i.UARTClockSourceSet)
-    UARTConfigSetExpClk                      0x00000dc3   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
-    UARTEnable                               0x00000e31   Thumb Code    20  uart.o(i.UARTEnable)
-    UARTFlowControlSet                       0x00000e45   Thumb Code    12  uart.o(i.UARTFlowControlSet)
-    UARTGetNum                               0x00000e51   Thumb Code    76  tivasetup.o(i.UARTGetNum)
-    UARTIntClear                             0x00000ed1   Thumb Code     4  uart.o(i.UARTIntClear)
-    UARTIntEnable                            0x00000ed5   Thumb Code     8  uart.o(i.UARTIntEnable)
-    UARTIntHandler                           0x00000edd   Thumb Code    26  tivasetup.o(i.UARTIntHandler)
-    UARTIntStatus                            0x00000efd   Thumb Code    10  uart.o(i.UARTIntStatus)
-    UARTStdioConfig                          0x00000f09   Thumb Code    68  uartstdio.o(i.UARTStdioConfig)
-    UART_int_init                            0x00000f59   Thumb Code    88  tivasetup.o(i.UART_int_init)
+    UART0_Handler                            0x00000da5   Thumb Code    26  tivasetup.o(i.UART0_Handler)
+    UART0_init                               0x00000dc5   Thumb Code    88  tivasetup.o(i.UART0_init)
+    UARTCharGet                              0x00000e2d   Thumb Code    12  uart.o(i.UARTCharGet)
+    UARTCharPut                              0x00000e39   Thumb Code    12  uart.o(i.UARTCharPut)
+    UARTClockSourceSet                       0x00000e45   Thumb Code     6  uart.o(i.UARTClockSourceSet)
+    UARTConfigSetExpClk                      0x00000e4b   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
+    UARTEnable                               0x00000eb9   Thumb Code    20  uart.o(i.UARTEnable)
+    UARTFlowControlSet                       0x00000ecd   Thumb Code    12  uart.o(i.UARTFlowControlSet)
+    UARTGetNum                               0x00000ed9   Thumb Code    76  tivasetup.o(i.UARTGetNum)
+    UARTIntClear                             0x00000f59   Thumb Code     4  uart.o(i.UARTIntClear)
+    UARTIntEnable                            0x00000f5d   Thumb Code     8  uart.o(i.UARTIntEnable)
+    UARTIntStatus                            0x00000f65   Thumb Code    10  uart.o(i.UARTIntStatus)
+    UARTStdioConfig                          0x00000f71   Thumb Code    68  uartstdio.o(i.UARTStdioConfig)
     UARTprintf                               0x00000fc1   Thumb Code    26  uartstdio.o(i.UARTprintf)
     UARTvprintf                              0x00000fdd   Thumb Code   574  uartstdio.o(i.UARTvprintf)
     UARTwrite                                0x0000122d   Thumb Code    46  uartstdio.o(i.UARTwrite)
     ledSwitchCases                           0x00001261   Thumb Code   140  tivasetup.o(i.ledSwitchCases)
     main                                     0x00001315   Thumb Code    54  main.o(i.main)
-    roundCheck                               0x000013f5   Thumb Code   192  game.o(i.roundCheck)
-    roundStart                               0x00001555   Thumb Code   152  game.o(i.roundStart)
-    userLEDSwitchCases                       0x00001641   Thumb Code   124  tivasetup.o(i.userLEDSwitchCases)
-    _fp_init                                 0x00001701   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00001709   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00001709   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    Region$$Table$$Base                      0x00001c70   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001c90   Number         0  anon$$obj.o(Region$$Table)
+    roundCheck                               0x000013f5   Thumb Code   180  game.o(i.roundCheck)
+    roundStart                               0x00001525   Thumb Code   152  game.o(i.roundStart)
+    userLEDSwitchCases                       0x00001611   Thumb Code   124  tivasetup.o(i.userLEDSwitchCases)
+    _fp_init                                 0x000016d1   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x000016d9   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x000016d9   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    Region$$Table$$Base                      0x00001c40   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00001c60   Number         0  anon$$obj.o(Region$$Table)
     userCount                                0x20000008   Data           4  tivasetup.o(.data)
     startGame                                0x2000000c   Data           1  tivasetup.o(.data)
     lostRound                                0x2000000d   Data           1  tivasetup.o(.data)
     currentRound                             0x20000010   Data           4  tivasetup.o(.data)
     position                                 0x20000014   Data           4  tivasetup.o(.data)
-    timerseconds                             0x20000018   Data           4  tivasetup.o(.data)
+    timerSeconds                             0x20000018   Data           4  tivasetup.o(.data)
     charNum                                  0x2000001c   Data           1  tivasetup.o(.data)
     nameNum                                  0x20000020   Data           4  tivasetup.o(.data)
     comArray                                 0x20000024   Data          40  game.o(.bss)
@@ -893,9 +892,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00001cb4, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00001c84, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001c90, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001c60, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -993,52 +992,52 @@ Memory Map of the image
     0x00000d86   0x00000d86   0x00000004   Code   RO         1066    i.TimerIntClear     driverlib.lib(timer.o)
     0x00000d8a   0x00000d8a   0x00000008   Code   RO         1068    i.TimerIntEnable    driverlib.lib(timer.o)
     0x00000d92   0x00000d92   0x00000012   Code   RO         1074    i.TimerLoadSet      driverlib.lib(timer.o)
-    0x00000da4   0x00000da4   0x0000000c   Code   RO         1300    i.UARTCharGet       driverlib.lib(uart.o)
-    0x00000db0   0x00000db0   0x0000000c   Code   RO         1302    i.UARTCharPut       driverlib.lib(uart.o)
-    0x00000dbc   0x00000dbc   0x00000006   Code   RO         1306    i.UARTClockSourceSet  driverlib.lib(uart.o)
-    0x00000dc2   0x00000dc2   0x0000006e   Code   RO         1308    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
-    0x00000e30   0x00000e30   0x00000014   Code   RO         1313    i.UARTEnable        driverlib.lib(uart.o)
-    0x00000e44   0x00000e44   0x0000000c   Code   RO         1320    i.UARTFlowControlSet  driverlib.lib(uart.o)
-    0x00000e50   0x00000e50   0x00000080   Code   RO          107    i.UARTGetNum        tivasetup.o
-    0x00000ed0   0x00000ed0   0x00000004   Code   RO         1321    i.UARTIntClear      driverlib.lib(uart.o)
-    0x00000ed4   0x00000ed4   0x00000008   Code   RO         1323    i.UARTIntEnable     driverlib.lib(uart.o)
-    0x00000edc   0x00000edc   0x00000020   Code   RO          108    i.UARTIntHandler    tivasetup.o
-    0x00000efc   0x00000efc   0x0000000a   Code   RO         1325    i.UARTIntStatus     driverlib.lib(uart.o)
-    0x00000f06   0x00000f06   0x00000002   PAD
-    0x00000f08   0x00000f08   0x00000050   Code   RO           11    i.UARTStdioConfig   uartstdio.o
-    0x00000f58   0x00000f58   0x00000068   Code   RO          109    i.UART_int_init     tivasetup.o
+    0x00000da4   0x00000da4   0x00000020   Code   RO          107    i.UART0_Handler     tivasetup.o
+    0x00000dc4   0x00000dc4   0x00000068   Code   RO          108    i.UART0_init        tivasetup.o
+    0x00000e2c   0x00000e2c   0x0000000c   Code   RO         1300    i.UARTCharGet       driverlib.lib(uart.o)
+    0x00000e38   0x00000e38   0x0000000c   Code   RO         1302    i.UARTCharPut       driverlib.lib(uart.o)
+    0x00000e44   0x00000e44   0x00000006   Code   RO         1306    i.UARTClockSourceSet  driverlib.lib(uart.o)
+    0x00000e4a   0x00000e4a   0x0000006e   Code   RO         1308    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
+    0x00000eb8   0x00000eb8   0x00000014   Code   RO         1313    i.UARTEnable        driverlib.lib(uart.o)
+    0x00000ecc   0x00000ecc   0x0000000c   Code   RO         1320    i.UARTFlowControlSet  driverlib.lib(uart.o)
+    0x00000ed8   0x00000ed8   0x00000080   Code   RO          109    i.UARTGetNum        tivasetup.o
+    0x00000f58   0x00000f58   0x00000004   Code   RO         1321    i.UARTIntClear      driverlib.lib(uart.o)
+    0x00000f5c   0x00000f5c   0x00000008   Code   RO         1323    i.UARTIntEnable     driverlib.lib(uart.o)
+    0x00000f64   0x00000f64   0x0000000a   Code   RO         1325    i.UARTIntStatus     driverlib.lib(uart.o)
+    0x00000f6e   0x00000f6e   0x00000002   PAD
+    0x00000f70   0x00000f70   0x00000050   Code   RO           11    i.UARTStdioConfig   uartstdio.o
     0x00000fc0   0x00000fc0   0x0000001a   Code   RO           14    i.UARTprintf        uartstdio.o
     0x00000fda   0x00000fda   0x00000002   PAD
     0x00000fdc   0x00000fdc   0x00000250   Code   RO           15    i.UARTvprintf       uartstdio.o
     0x0000122c   0x0000122c   0x00000034   Code   RO           16    i.UARTwrite         uartstdio.o
     0x00001260   0x00001260   0x000000b4   Code   RO          110    i.ledSwitchCases    tivasetup.o
     0x00001314   0x00001314   0x000000e0   Code   RO          226    i.main              main.o
-    0x000013f4   0x000013f4   0x00000160   Code   RO          243    i.roundCheck        game.o
-    0x00001554   0x00001554   0x000000ec   Code   RO          244    i.roundStart        game.o
-    0x00001640   0x00001640   0x000000c0   Code   RO          111    i.userLEDSwitchCases  tivasetup.o
-    0x00001700   0x00001700   0x0000000a   Code   RO         1669    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x0000170a   0x0000170a   0x00000002   PAD
-    0x0000170c   0x0000170c   0x0000001c   Data   RO           17    .constdata          uartstdio.o
-    0x00001728   0x00001728   0x00000210   Data   RO          316    .constdata          driverlib.lib(gpio.o)
-    0x00001938   0x00001938   0x0000010c   Data   RO          611    .constdata          driverlib.lib(interrupt.o)
-    0x00001a44   0x00001a44   0x000001c4   Data   RO          765    .constdata          driverlib.lib(sysctl.o)
-    0x00001c08   0x00001c08   0x00000011   Data   RO           18    .conststring        uartstdio.o
-    0x00001c19   0x00001c19   0x00000003   PAD
-    0x00001c1c   0x00001c1c   0x00000053   Data   RO          227    .conststring        main.o
-    0x00001c6f   0x00001c6f   0x00000001   PAD
-    0x00001c70   0x00001c70   0x00000020   Data   RO         1759    Region$$Table       anon$$obj.o
+    0x000013f4   0x000013f4   0x00000130   Code   RO          243    i.roundCheck        game.o
+    0x00001524   0x00001524   0x000000ec   Code   RO          244    i.roundStart        game.o
+    0x00001610   0x00001610   0x000000c0   Code   RO          111    i.userLEDSwitchCases  tivasetup.o
+    0x000016d0   0x000016d0   0x0000000a   Code   RO         1669    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x000016da   0x000016da   0x00000002   PAD
+    0x000016dc   0x000016dc   0x0000001c   Data   RO           17    .constdata          uartstdio.o
+    0x000016f8   0x000016f8   0x00000210   Data   RO          316    .constdata          driverlib.lib(gpio.o)
+    0x00001908   0x00001908   0x0000010c   Data   RO          611    .constdata          driverlib.lib(interrupt.o)
+    0x00001a14   0x00001a14   0x000001c4   Data   RO          765    .constdata          driverlib.lib(sysctl.o)
+    0x00001bd8   0x00001bd8   0x00000011   Data   RO           18    .conststring        uartstdio.o
+    0x00001be9   0x00001be9   0x00000003   PAD
+    0x00001bec   0x00001bec   0x00000053   Data   RO          227    .conststring        main.o
+    0x00001c3f   0x00001c3f   0x00000001   PAD
+    0x00001c40   0x00001c40   0x00000020   Data   RO         1759    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00001c90, Size: 0x00000024, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x20000000, Load base: 0x00001c60, Size: 0x00000024, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x00001c90   0x00000005   Data   RW           19    .data               uartstdio.o
-    0x20000005   0x00001c95   0x00000003   PAD
-    0x20000008   0x00001c98   0x0000001c   Data   RW          112    .data               tivasetup.o
+    0x20000000   0x00001c60   0x00000005   Data   RW           19    .data               uartstdio.o
+    0x20000005   0x00001c65   0x00000003   PAD
+    0x20000008   0x00001c68   0x0000001c   Data   RW          112    .data               tivasetup.o
 
 
-    Execution Region ER_ZI (Exec base: 0x20000024, Load base: 0x00001cb4, Size: 0x00000294, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x20000024, Load base: 0x00001c84, Size: 0x00000294, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1056,14 +1055,14 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       588        244          0          0         80       1935   game.o
+       540        208          0          0         80       1927   game.o
        224        170         83          0          0        555   main.o
        672        636          0          0        256        564   startup_rvmdk.o
-      1332        340          0         28          0       6494   tivasetup.o
+      1332        340          0         28          0       6486   tivasetup.o
        750         36         45          5          0      10144   uartstdio.o
 
     ----------------------------------------------------------------------
-      3568       1426        164         36        336      19692   Object Totals
+      3520       1390        164         36        336      19676   Object Totals
          0          0         32          0          0          0   (incl. Generated)
          2          0          4          3          0          0   (incl. Padding)
 
@@ -1123,15 +1122,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5900       1564       1412         36        660      38129   Grand Totals
-      5900       1564       1412         36        660      38129   ELF Image Totals
-      5900       1564       1412         36          0          0   ROM Totals
+      5852       1528       1412         36        660      38113   Grand Totals
+      5852       1528       1412         36        660      38113   ELF Image Totals
+      5852       1528       1412         36          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7312 (   7.14kB)
+    Total RO  Size (Code + RO Data)                 7264 (   7.09kB)
     Total RW  Size (RW Data + ZI Data)               696 (   0.68kB)
-    Total ROM Size (Code + RO Data + RW Data)       7348 (   7.18kB)
+    Total ROM Size (Code + RO Data + RW Data)       7300 (   7.13kB)
 
 ==============================================================================
 

@@ -5,7 +5,7 @@ int main(void) {
 		// Set the clock to 10Mhz
 		SysCtlClockSet(SYSCTL_SYSDIV_20|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);
 		PortFunctionInit();
-		UART_int_init();
+		UART0_init();
 		GPIOF_Interrupt_Init();
 		Timer0A_Init(period);
 
@@ -16,7 +16,7 @@ int main(void) {
 	
 		UARTprintf("\r\nPlease type your name. Then, press enter key to play!\n");
 
-		while (1) //let interrupt handler do the UART echo function
+		while (1) //let interrupt handlers to function
 		{
 
 	}

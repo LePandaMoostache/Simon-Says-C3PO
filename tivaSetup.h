@@ -1,8 +1,8 @@
 #include "include.h"
 
 extern void PortFunctionInit(void);
-extern void UART_int_init(void);
-extern void UARTIntHandler(void);
+extern void UART0_init(void);
+extern void UART0_Handler(void);
 extern void UARTGetNum(void);
 
 extern void IntGlobalEnable(void); 
@@ -22,7 +22,7 @@ extern bool startGame;
 extern bool lostRound;
 extern int position;
 extern int currentRound;
-extern int timerseconds;
+extern int timerSeconds;
 extern int nameNum;
 
 extern void roundStart(int roundNum);

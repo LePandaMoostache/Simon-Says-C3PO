@@ -5,7 +5,7 @@ bool startGame = false;
 bool lostRound = false;
 int currentRound = 1;
 int position = 1;
-int timerseconds = 30;
+int timerSeconds = 30;
 char charNum;
 int nameNum = 0;
 
@@ -128,7 +128,7 @@ void GPIOPortF_Handler(void) {
 }
 
 /** UART0 INTERRUPT INITIALIZER **/
-void UART_int_init() {
+void UART0_init() {
     //
     // Enable the GPIO Peripheral used by the UART.
     SysCtlPeripheralEnable(SYSCTL_PERIPH_GPIOA);
@@ -162,7 +162,7 @@ void UART_int_init() {
 }
 
 /** UART0 INTERRUPT HANDLER **/
-void UARTIntHandler(void) {
+void UART0_Handler(void) {
 
     uint32_t ui32Status;
     UARTIntClear(UART0_BASE, ui32Status); //clear the asserted interrupts
@@ -216,10 +216,10 @@ void Timer0A_Handler(void) {
         TimerIntClear(TIMER0_BASE, TIMER_TIMA_TIMEOUT);
 
         //decreases by integer 1 
-        UARTprintf("\r\n%i", timerseconds);
-        timerseconds--;
+        UARTprintf("\r\n%i", timerSeconds);
+        timerSeconds--;
 
-        if (timerseconds == 0) {
+        if (timerSeconds == 0) {
             roundCheck();
         }
     }
