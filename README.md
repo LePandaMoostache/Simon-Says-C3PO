@@ -3,6 +3,7 @@ This project uses the EK-TM4C123GXL, aka the TM4C123G LaunchPad Evaluation Kit. 
 
 ## Version 9.0
 May 24, 2020
+
 *Final Commit for Project Submission*
 
 INSTRUCTIONS
