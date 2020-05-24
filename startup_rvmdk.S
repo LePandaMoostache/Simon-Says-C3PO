@@ -72,7 +72,7 @@ __heap_limit
 ;******************************************************************************
         AREA    RESET, CODE, READONLY
         THUMB
-		EXTERN	UARTIntHandler
+		EXTERN	UART0_Handler
 		EXTERN  GPIOPortF_Handler
 		EXTERN  Timer0A_Handler
 ;******************************************************************************
@@ -103,7 +103,7 @@ __Vectors
         DCD     IntDefaultHandler           ; GPIO Port C
         DCD     IntDefaultHandler           ; GPIO Port D
         DCD     IntDefaultHandler           ; GPIO Port E
-        DCD     UARTIntHandler		        ; UART0 Rx and Tx
+        DCD     UART0_Handler		        ; UART0 Rx and Tx
         DCD     IntDefaultHandler           ; UART1 Rx and Tx
         DCD     IntDefaultHandler           ; SSI0 Rx and Tx
         DCD     IntDefaultHandler           ; I2C0 Master and Slave

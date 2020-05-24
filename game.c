@@ -62,7 +62,7 @@ void roundCheck(void) {
 				// SysCtlDelay(2000000);
         userCount = 0; // Reset position of user LED currently selected
         position = 1; // Clears userArray's contents
-        timerseconds = 30 - currentRound; // Decrease timer by 1 for next round
+        timerSeconds = 30 - currentRound; // Decrease timer by 1 for next round
         currentRound++; // Counts up to show the next round
         roundStart(currentRound); // Jumps back to roundStart
     }
@@ -75,7 +75,7 @@ void roundCheck(void) {
 		}
     // If player ran out of time, will display below statement.
     // Note: Game Over UARTprintf statement will also print, since it fits. 
-    if (timerseconds == 0) {
+    if (timerSeconds == 0) {
         UARTprintf("\r\nRAN OUT OF TIME");
     }
 }

@@ -115,7 +115,7 @@ ARM Macro Assembler    Page 2
                        ***********************
    73 00000000                 AREA             RESET, CODE, READONLY
    74 00000000                 THUMB
-   75 00000000                 EXTERN           UARTIntHandler
+   75 00000000                 EXTERN           UART0_Handler
    76 00000000                 EXTERN           GPIOPortF_Handler
    77 00000000                 EXTERN           Timer0A_Handler
    78 00000000         ;*******************************************************
@@ -168,8 +168,8 @@ ARM Macro Assembler    Page 3
                                                             
   105 00000050 00000000        DCD              IntDefaultHandler ; GPIO Port E
                                                             
-  106 00000054 00000000        DCD              UARTIntHandler 
-                                                            ; UART0 Rx and Tx
+  106 00000054 00000000        DCD              UART0_Handler ; UART0 Rx and Tx
+                                                            
   107 00000058 00000000        DCD              IntDefaultHandler 
                                                             ; UART1 Rx and Tx
   108 0000005C 00000000        DCD              IntDefaultHandler 
@@ -923,14 +923,14 @@ Symbol: Timer0A_Handler
    Uses
       At line 120 in file startup_rvmdk.S
 Comment: Timer0A_Handler used once
-UARTIntHandler 00000000
+UART0_Handler 00000000
 
-Symbol: UARTIntHandler
+Symbol: UART0_Handler
    Definitions
       At line 75 in file startup_rvmdk.S
    Uses
       At line 106 in file startup_rvmdk.S
-Comment: UARTIntHandler used once
+Comment: UART0_Handler used once
 __main 00000000
 
 Symbol: __main
