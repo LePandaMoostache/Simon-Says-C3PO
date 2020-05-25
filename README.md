@@ -17,6 +17,6 @@ INSTRUCTIONS
 - If user got correct LED order: Move to next round
 - If user got wrong LED order: Game over, need to reset
 - If user ran our of time: Ran out of time, game over and need to reset
-- Don't forget the timer! First round starts with 30 seconds, but the next rounds will be 30 - currentRound!
+- Don't forget the timer! First round starts with 30 seconds, but the next rounds will be 30 - currentRound.
 
 Please head on over to our [Github Wiki](https://github.com/LePandaMoostache/Simon-Says-C3PO/wiki) page for a detailed process/analysis on how we completed our project. 
